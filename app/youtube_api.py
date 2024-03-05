@@ -9,7 +9,8 @@ from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 from google.auth.exceptions import RefreshError
 from oauthlib.oauth2 import OAuth2Error
-import logging
+import logging 
+import json
 
 
 # YouTube API service endpoints
@@ -54,6 +55,18 @@ def oauth2callback():
         )
         flow.fetch_token(authorization_response=request.url)
         logging.info('Successfully fetched token')
+
+        # Serialize the credentials to a JSON string
+        credentials_json = flow.credentials.to_json()
+        
+        # DOESNT WORK YET
+        #user_info = fetch_user_info(flow.credentials)
+        #session['user_name'] = user_info.get('name', 'User')  # Default to "User" if name not available
+
+        # Store the serialized credentials in the session
+        session['credentials'] = credentials_json
+        logging.info('Credentials saved to session')
+        
     except OAuth2Error as e: 
         logging.error(f'OAuth2Error during authentication: {e.description}')
         flash(f'Failed to complete authentication: {e.description}')
@@ -63,8 +76,6 @@ def oauth2callback():
         flash(f'An error occurred: {e}')
         return redirect(url_for('main.index'))
 
-    session['credentials'] = flow.credentials_to_dict()
-    logging.info('Credentials saved to session')
     flash('You have been successfully logged in.')
     return redirect(url_for('main.index'))
 

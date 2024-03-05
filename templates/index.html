@@ -6,7 +6,7 @@
 </head>
 <body>
     {% if session.get('credentials') %}
-        <h1>Create Playlist from Song List</h1>
+        <h1>Hi {{ session.get('user_name', 'User') }}, Create Playlist from Song List</h1>
         <form method="post">
             <textarea name="song_list" rows="10" cols="50" placeholder="Enter songs, one per line..."></textarea><br>
             <button type="submit">Create Playlist</button>
