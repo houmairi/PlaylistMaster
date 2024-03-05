@@ -20,7 +20,10 @@ YOUTUBE_API_BASE_URL = 'https://www.googleapis.com/youtube/v3'
 # Replace these placeholders with your actual credentials
 CLIENT_SECRETS_FILE = 'client_secret_1033164421113-5dang8disl6mn08ojvlgamlsoejr7qai.apps.googleusercontent.com.json'
 SCOPES = [      'https://www.googleapis.com/auth/youtube.force-ssl',
-                'https://www.googleapis.com/auth/userinfo.profile'
+                'https://www.googleapis.com/auth/userinfo.profile',
+                'https://www.googleapis.com/auth/youtube.readonly',
+                'https://www.googleapis.com/auth/youtube',
+                'openid'
 ]
 REDIRECT_URI = 'http://127.0.0.1:5000/oauth2callback'
 os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
