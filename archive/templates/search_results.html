@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Results</title>
+</head>
+<body>
+    <h1>Search Results for "{{ query }}"</h1>
+    <form action="{{ url_for('create_playlist') }}" method="post">
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
+        {% if results %}
+            <ul>
+            {% for result in results %}
+                <li>
+                    <input type="checkbox" name="videoIds" value="{{ result['videoId'] }}" id="video-{{ loop.index }}">
+                    <label for="video-{{ loop.index }}">{{ result['title'] | default('Unknown Title') }} by {{ result['channelTitle'] | default('Unknown Channel') }}</label>
+                </li>
+            {% endfor %}
+            </ul>
+            <button type="submit">Create Playlist</button>
+        {% else %}
+            <p>No results found for "{{ query }}". Try a different search.</p>
+        {% endif %}
+    </form>
+    <a href="{{ url_for('index') }}">Back to Search</a>
+</body>
+</html>

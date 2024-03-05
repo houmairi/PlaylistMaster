@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Playlist</title>
+</head>
+<body>
+    {% if session.get('credentials') %}
+        <h1>Create Playlist from Song List</h1>
+        <form method="post">
+            <textarea name="song_list" rows="10" cols="50" placeholder="Enter songs, one per line..."></textarea><br>
+            <button type="submit">Create Playlist</button>
+        </form>
+    {% else %}
+        <h1>Welcome to Playlist Creator</h1>
+        <p>You need to <a href="{{ url_for('main.authorize') }}">sign in with Google</a> to create a playlist.</p>
+    {% endif %}
+</body>
+</html>

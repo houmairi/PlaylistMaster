@@ -1,0 +1,68 @@
+2024-03-05 19:59:41 WARNING:  * Debugger is active!
+2024-03-05 19:59:41 INFO:  * Debugger PIN: 968-812-317
+2024-03-05 19:59:52 INFO:  * Detected change in 'C:\\Users\\Niko\\Documents\\Repositorys\\PlaylistMaster\\app.py', reloading
+2024-03-05 19:59:52 WARNING:  * Debugger is active!
+2024-03-05 19:59:52 INFO:  * Debugger PIN: 968-812-317
+2024-03-05 20:00:14 INFO:  * Detected change in 'C:\\Users\\Niko\\Documents\\Repositorys\\PlaylistMaster\\app\\youtube_api.py', reloading
+2024-03-05 20:00:15 WARNING:  * Debugger is active!
+2024-03-05 20:00:15 INFO:  * Debugger PIN: 968-812-317
+2024-03-05 20:00:26 INFO:  * Detected change in 'C:\\Users\\Niko\\Documents\\Repositorys\\PlaylistMaster\\app\\youtube_api.py', reloading
+2024-03-05 20:00:26 WARNING:  * Debugger is active!
+2024-03-05 20:00:26 INFO:  * Debugger PIN: 968-812-317
+2024-03-05 20:01:07 INFO: 127.0.0.1 - - [05/Mar/2024 20:01:07] "GET / HTTP/1.1" 200 -
+2024-03-05 20:01:07 INFO: 127.0.0.1 - - [05/Mar/2024 20:01:07] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2024-03-05 20:01:09 INFO: 127.0.0.1 - - [05/Mar/2024 20:01:09] "[32mGET /authorize HTTP/1.1[0m" 302 -
+2024-03-05 20:01:16 ERROR: Unexpected error during authentication: Scope has changed from "https://www.googleapis.com/auth/youtube.force-ssl" to "https://www.googleapis.com/auth/youtube https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/youtube.force-ssl".
+2024-03-05 20:01:16 INFO: 127.0.0.1 - - [05/Mar/2024 20:01:16] "[32mGET /oauth2callback?state=fldCqZiiBCXUzwF7OepJawQOwKko0X&code=4/0AeaYSHBg0KG25tMxUzve3FJRzFw4g6bRLquCENg5cKuP7QKaOSYrMPoHQCFPEi5Eonu2mw&scope=profile%20https://www.googleapis.com/auth/youtube.force-ssl%20https://www.googleapis.com/auth/youtube%20https://www.googleapis.com/auth/userinfo.profile HTTP/1.1[0m" 302 -
+2024-03-05 20:01:16 INFO: 127.0.0.1 - - [05/Mar/2024 20:01:16] "GET / HTTP/1.1" 200 -
+2024-03-05 20:05:04 INFO:  * Detected change in 'C:\\Users\\Niko\\Documents\\Repositorys\\PlaylistMaster\\app\\youtube_api.py', reloading
+2024-03-05 20:05:04 WARNING:  * Debugger is active!
+2024-03-05 20:05:04 INFO:  * Debugger PIN: 968-812-317
+2024-03-05 20:06:09 INFO: 127.0.0.1 - - [05/Mar/2024 20:06:09] "[32mGET /authorize HTTP/1.1[0m" 302 -
+2024-03-05 20:06:14 ERROR: Unexpected error during authentication: Scope has changed from "https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/youtube.force-ssl" to "https://www.googleapis.com/auth/youtube.readonly https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/youtube.force-ssl".
+2024-03-05 20:06:14 INFO: 127.0.0.1 - - [05/Mar/2024 20:06:14] "[32mGET /oauth2callback?state=W8OyZRBsUl8N30lyb9dIx4SFNYLADK&code=4/0AeaYSHBF3HrwV069rnyXKv3L4LEiAfripV0HdjVmz6pFQjMFdfJQ4bcbV6yHapTL6UzAWw&scope=profile%20https://www.googleapis.com/auth/youtube.force-ssl%20https://www.googleapis.com/auth/youtube.readonly%20https://www.googleapis.com/auth/userinfo.profile HTTP/1.1[0m" 302 -
+2024-03-05 20:06:14 INFO: 127.0.0.1 - - [05/Mar/2024 20:06:14] "GET / HTTP/1.1" 200 -
+2024-03-05 20:08:40 INFO:  * Detected change in 'C:\\Users\\Niko\\Documents\\Repositorys\\PlaylistMaster\\app\\routes.py', reloading
+2024-03-05 20:08:41 WARNING:  * Debugger is active!
+2024-03-05 20:08:41 INFO:  * Debugger PIN: 968-812-317
+2024-03-05 20:08:44 INFO: 127.0.0.1 - - [05/Mar/2024 20:08:44] "[32mGET /authorize HTTP/1.1[0m" 302 -
+2024-03-05 20:08:49 ERROR: Unexpected error during authentication: Scope has changed from "https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/youtube.force-ssl" to "https://www.googleapis.com/auth/youtube.force-ssl https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/youtube".
+2024-03-05 20:08:49 INFO: 127.0.0.1 - - [05/Mar/2024 20:08:49] "[35m[1mGET /oauth2callback?state=anXridDShEdkAdfQ2QcyvxDiuDOLjj&code=4/0AeaYSHAcMEG6IwNjqKP5ZXUpqQlzrj1Z2h4zuA4_Bq6dooCl2ZB4STk_I0OaOGMAyL-SPg&scope=profile%20https://www.googleapis.com/auth/youtube.force-ssl%20https://www.googleapis.com/auth/youtube%20https://www.googleapis.com/auth/userinfo.profile HTTP/1.1[0m" 500 -
+2024-03-05 20:08:49 INFO: 127.0.0.1 - - [05/Mar/2024 20:08:49] "[36mGET /oauth2callback?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2024-03-05 20:08:49 INFO: 127.0.0.1 - - [05/Mar/2024 20:08:49] "[36mGET /oauth2callback?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2024-03-05 20:08:49 INFO: 127.0.0.1 - - [05/Mar/2024 20:08:49] "[36mGET /oauth2callback?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2024-03-05 20:10:19 INFO:  * Detected change in 'C:\\Users\\Niko\\Documents\\Repositorys\\PlaylistMaster\\app\\routes.py', reloading
+2024-03-05 20:10:19 WARNING:  * Debugger is active!
+2024-03-05 20:10:19 INFO:  * Debugger PIN: 968-812-317
+2024-03-05 20:10:23 INFO: 127.0.0.1 - - [05/Mar/2024 20:10:23] "GET / HTTP/1.1" 200 -
+2024-03-05 20:10:25 INFO: 127.0.0.1 - - [05/Mar/2024 20:10:25] "[35m[1mGET /authorize HTTP/1.1[0m" 500 -
+2024-03-05 20:10:25 INFO: 127.0.0.1 - - [05/Mar/2024 20:10:25] "GET /authorize?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2024-03-05 20:10:25 INFO: 127.0.0.1 - - [05/Mar/2024 20:10:25] "GET /authorize?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2024-03-05 20:10:25 INFO: 127.0.0.1 - - [05/Mar/2024 20:10:25] "GET /authorize?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2024-03-05 20:10:25 INFO: 127.0.0.1 - - [05/Mar/2024 20:10:25] "[36mGET /authorize?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2024-03-05 20:10:33 INFO:  * Detected change in 'C:\\Users\\Niko\\Documents\\Repositorys\\PlaylistMaster\\app\\routes.py', reloading
+2024-03-05 20:10:34 WARNING:  * Debugger is active!
+2024-03-05 20:10:34 INFO:  * Debugger PIN: 968-812-317
+2024-03-05 20:10:36 INFO: 127.0.0.1 - - [05/Mar/2024 20:10:36] "GET / HTTP/1.1" 200 -
+2024-03-05 20:10:37 INFO: 127.0.0.1 - - [05/Mar/2024 20:10:37] "GET / HTTP/1.1" 200 -
+2024-03-05 20:10:37 INFO: 127.0.0.1 - - [05/Mar/2024 20:10:37] "GET / HTTP/1.1" 200 -
+2024-03-05 20:10:37 INFO: 127.0.0.1 - - [05/Mar/2024 20:10:37] "GET / HTTP/1.1" 200 -
+2024-03-05 20:10:37 INFO: 127.0.0.1 - - [05/Mar/2024 20:10:37] "GET / HTTP/1.1" 200 -
+2024-03-05 20:13:14 INFO:  * Detected change in 'C:\\Users\\Niko\\Documents\\Repositorys\\PlaylistMaster\\app\\routes.py', reloading
+2024-03-05 20:13:14 WARNING:  * Debugger is active!
+2024-03-05 20:13:14 INFO:  * Debugger PIN: 968-812-317
+2024-03-05 20:13:15 INFO:  * Detected change in 'C:\\Users\\Niko\\Documents\\Repositorys\\PlaylistMaster\\app\\routes.py', reloading
+2024-03-05 20:13:16 WARNING:  * Debugger is active!
+2024-03-05 20:13:16 INFO:  * Debugger PIN: 968-812-317
+2024-03-05 20:14:07 INFO: 127.0.0.1 - - [05/Mar/2024 20:14:07] "GET / HTTP/1.1" 200 -
+2024-03-05 20:14:08 INFO: 127.0.0.1 - - [05/Mar/2024 20:14:08] "[32mGET /authorize HTTP/1.1[0m" 302 -
+2024-03-05 20:14:14 ERROR: Unexpected error during authentication: Scope has changed from "https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/youtube.force-ssl" to "https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/youtube.force-ssl https://www.googleapis.com/auth/youtube.readonly".
+2024-03-05 20:14:14 INFO: 127.0.0.1 - - [05/Mar/2024 20:14:14] "[32mGET /oauth2callback?state=FjToodE9sPwcNAjcwYQ09DfdGPGVCd&code=4/0AeaYSHA6_SlgeOTpfHWPiq8H44Q062tBn6T-6l6otAUpdd16rAkRAfB4BfFIu4YtVys4tQ&scope=profile%20https://www.googleapis.com/auth/youtube.force-ssl%20https://www.googleapis.com/auth/youtube.readonly%20https://www.googleapis.com/auth/userinfo.profile HTTP/1.1[0m" 302 -
+2024-03-05 20:14:14 INFO: 127.0.0.1 - - [05/Mar/2024 20:14:14] "[32mGET /authorize HTTP/1.1[0m" 302 -
+2024-03-05 20:14:21 ERROR: Unexpected error during authentication: Scope has changed from "https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/youtube.force-ssl" to "https://www.googleapis.com/auth/youtube https://www.googleapis.com/auth/youtube.force-ssl https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/youtube.readonly".
+2024-03-05 20:14:21 INFO: 127.0.0.1 - - [05/Mar/2024 20:14:21] "[32mGET /oauth2callback?state=IusgOR7wZ4wbLGVgGYcci3lSh56D0W&code=4/0AeaYSHDFAz3Letx905g2eGGpimWQil7MBxdFGYPqipE1yLVy6yb0RCcBPBO5iqgUvl94Xg&scope=profile%20https://www.googleapis.com/auth/youtube.force-ssl%20https://www.googleapis.com/auth/youtube.readonly%20https://www.googleapis.com/auth/youtube%20https://www.googleapis.com/auth/userinfo.profile HTTP/1.1[0m" 302 -
+2024-03-05 20:14:21 INFO: 127.0.0.1 - - [05/Mar/2024 20:14:21] "[32mGET /authorize HTTP/1.1[0m" 302 -
+2024-03-05 20:14:27 ERROR: Unexpected error during authentication: Scope has changed from "https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/youtube.force-ssl" to "https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/youtube.force-ssl https://www.googleapis.com/auth/youtube.readonly".
+2024-03-05 20:14:27 INFO: 127.0.0.1 - - [05/Mar/2024 20:14:27] "[32mGET /oauth2callback?state=RehLg2l2n81uE8c0glTmqyDDmCZx4V&code=4/0AeaYSHDl0i5wpyYOGrnnKZqCBSjnGxXSldR8XRmskP0ge27pkqlAWJt5BEmHCVfQm4bW3w&scope=profile%20https://www.googleapis.com/auth/youtube.force-ssl%20https://www.googleapis.com/auth/youtube.readonly%20https://www.googleapis.com/auth/userinfo.profile HTTP/1.1[0m" 302 -
+2024-03-05 20:14:27 INFO: 127.0.0.1 - - [05/Mar/2024 20:14:27] "[32mGET /authorize HTTP/1.1[0m" 302 -
+2024-03-05 20:14:32 INFO: 127.0.0.1 - - [05/Mar/2024 20:14:32] "GET / HTTP/1.1" 200 -

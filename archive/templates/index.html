@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Playlist</title>
+</head>
+<body>
+    <h1>Create Playlist from Song List</h1>
+    <form action="{{ url_for('create_playlist') }}" method="post">
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
+        <textarea name="songs" rows="10" cols="50" placeholder="Enter songs, one per line..."></textarea><br>
+        <button type="submit">Create Playlist</button>
+    </form>
+    <a href="{{ url_for('index') }}">Back to Search</a>
+</body>
+</html>
