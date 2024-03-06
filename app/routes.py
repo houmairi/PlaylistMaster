@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, flash, redirect, url_for, session
-from .youtube_api import initiate_oauth_flow, oauth2callback, create_playlist_with_name, get_user_info
+from .youtube_api import initiate_oauth_flow, oauth2callback, create_playlist_with_name, get_user_info, get_user_playlists, delete_playlist, rename_playlist
 from google.oauth2.credentials import Credentials
 import json
 import logging
@@ -26,9 +26,11 @@ def callback():
         flash('Authentication failed. Please try logging in again.')
         return redirect(url_for('main.authorize'))
 
-@bp.route('/', methods=['GET', 'POST'])
+@bp.route('/')
 def index():
-    # Get the user's name from Google API
+    user_name = None
+    user_playlists = None
+
     credentials_json = session.get('credentials')
     if credentials_json:
         try:
@@ -37,39 +39,77 @@ def index():
             )
             user_name = get_user_info(credentials)
             logging.info(f'User name retrieved from API: {user_name}')
+
+            user_playlists = get_user_playlists(credentials)
+        except ValueError as e:
+            logging.error(f'Failed to deserialize credentials: {e}')
         except Exception as e:
-            logging.error(f'Failed to get user info: {e}')
-            user_name = 'User'
-    else:
-        user_name = 'User'
+            logging.error(f'Failed to retrieve user playlists: {e}')
 
-    if request.method == 'POST':
-        song_list = request.form.get('song_list')
-        playlist_name = request.form.get('playlist_name')
-        if song_list:
-            song_names = song_list.splitlines()
-            song_names = [song.strip() for song in song_names if song.strip()]
+    return render_template('index.html', user_name=user_name, user_playlists=user_playlists)
 
-            # Ensure the user is authenticated before attempting to create a playlist
-            if 'credentials' not in session:
-                flash('You need to log in before creating a playlist.')
-                return redirect(url_for('main.authorize'))
+@bp.route('/playlists')
+def playlists():
+    credentials_json = session.get('credentials')
+    if not credentials_json:
+        flash('Please log in to view your playlists.')
+        return redirect(url_for('main.authorize'))
 
-            # Call the function to create a playlist and pass the list of song names and playlist name
-            success, message = create_playlist_with_name(song_names, playlist_name)
-            flash(message)
-            if success:
-                # Redirect to a success page or the index with a success message
-                return redirect(url_for('main.index'))
-        else:
-            flash('Please enter at least one song name.')
+    try:
+        credentials = Credentials.from_authorized_user_info(
+            info=json.loads(credentials_json)
+        )
+        playlists = get_user_playlists(credentials)
+    except Exception as e:
+        logging.error(f'Failed to get user playlists: {e}')
+        playlists = []
 
-    # If the method is GET or credentials are not set, show the main page
-    return render_template('index.html', user_name=user_name)
+    return render_template('playlists.html', playlists=playlists)
+
+@bp.route('/delete_playlist/<playlist_id>', methods=['POST'])
+def delete_playlist_route(playlist_id):
+    credentials_json = session.get('credentials')
+    if not credentials_json:
+        flash('Please log in to delete a playlist.')
+        return redirect(url_for('main.authorize'))
+
+    try:
+        credentials = Credentials.from_authorized_user_info(
+            info=json.loads(credentials_json)
+        )
+        delete_playlist(credentials, playlist_id)
+        flash('Playlist deleted successfully.')
+    except Exception as e:
+        logging.error(f'Failed to delete playlist: {e}')
+        flash('Failed to delete playlist. Please try again.')
+
+    return redirect(url_for('main.playlists'))
+
+@bp.route('/rename_playlist/<playlist_id>', methods=['POST'])
+def rename_playlist_route(playlist_id):
+    credentials_json = session.get('credentials')
+    if not credentials_json:
+        flash('Please log in to rename a playlist.')
+        return redirect(url_for('main.authorize'))
+
+    new_title = request.form.get('new_title')
+    if not new_title:
+        flash('Please provide a new title for the playlist.')
+        return redirect(url_for('main.playlists'))
+
+    try:
+        credentials = Credentials.from_authorized_user_info(
+            info=json.loads(credentials_json)
+        )
+        rename_playlist(credentials, playlist_id, new_title)
+        flash('Playlist renamed successfully.')
+    except Exception as e:
+        logging.error(f'Failed to rename playlist: {e}')
+        flash('Failed to rename playlist. Please try again.')
+
+    return redirect(url_for('main.playlists'))
 
 @bp.route('/logout')
 def logout():
-    # Remove the credentials from the session
-    session.pop('credentials', None)
-    flash('You have been logged out.')
-    return redirect(url_for('main.index'))
+    session.clear()  # Clear the session data
+    return redirect(url_for('main.index'))  # Redirect to the index page after logout

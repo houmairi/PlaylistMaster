@@ -241,6 +241,55 @@ def create_playlist_with_name(song_names, playlist_name):
 
     return success, message
 
+def get_user_playlists(credentials):
+    youtube = build(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION, credentials=credentials)
+    playlists = []
+    next_page_token = None
+
+    while True:
+        playlist_response = youtube.playlists().list(
+            part="snippet",
+            maxResults=50,
+            mine=True,
+            pageToken=next_page_token
+        ).execute()
+
+        playlists.extend(playlist_response["items"])
+        next_page_token = playlist_response.get("nextPageToken")
+
+        if not next_page_token:
+            break
+
+    return playlists
+
+def delete_playlist(credentials, playlist_id):
+    youtube = build(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION, credentials=credentials)
+    youtube.playlists().delete(id=playlist_id).execute()
+
+def rename_playlist(credentials, playlist_id, new_title):
+    youtube = build(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION, credentials=credentials)
+    youtube.playlists().update(
+        part="snippet",
+        body=dict(
+            id=playlist_id,
+            snippet=dict(
+                title=new_title
+            )
+        )
+    ).execute()
+
+def remove_video_from_playlist(credentials, playlist_id, video_id):
+    youtube = build(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION, credentials=credentials)
+    playlist_items = youtube.playlistItems().list(
+        part="snippet",
+        playlistId=playlist_id,
+        videoId=video_id
+    ).execute()
+
+    if playlist_items["items"]:
+        playlist_item_id = playlist_items["items"][0]["id"]
+        youtube.playlistItems().delete(id=playlist_item_id).execute()
+
 def revoke_credentials(credentials):
     try:
         request = google.auth.transport.requests.Request()
