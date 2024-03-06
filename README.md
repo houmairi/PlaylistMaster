@@ -45,5 +45,3 @@ Fork the repository and submit pull requests with your changes.
 
 ## License
 Licensed under the MIT License.
-
-Please replace YOUR_REPOSITORY_URL and YOUR_PROJECT_DIRECTORY with the actual values for your project. This format should now be fully compatible with GitHub's Markdown rendering, allowing you to easily copy and paste it into your README.md file.
