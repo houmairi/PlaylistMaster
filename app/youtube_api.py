@@ -173,33 +173,72 @@ def add_song_to_playlist(playlist_id, video_id):
     # Placeholder: Implement the actual logic to add a song to a playlist here
     pass
 
-# Now, define the create_playlist_with_songs function
 def create_playlist_with_songs(song_names):
     """Create a playlist and add the provided songs to it."""
     success = True
     message = "Playlist created successfully!"
-    
-    # Authenticate with the YouTube API
-    youtube_service = authenticate_youtube_api()
-    
-    if not youtube_service:
-        return False, "Failed to authenticate with the YouTube API."
-    
+
+    # Get the serialized credentials from the session
+    credentials_json = session.get('credentials')
+    if not credentials_json:
+        return False, "Failed to get user credentials from the session."
+
+    # Deserialize the credentials from the JSON string
+    try:
+        credentials = Credentials.from_authorized_user_info(
+            info=json.loads(credentials_json)
+        )
+    except ValueError as e:
+        return False, f"Failed to deserialize credentials: {e}"
+
+    try:
+        youtube = build('youtube', 'v3', credentials=credentials)
+    except HttpError as e:
+        return False, f"Failed to build YouTube client: {e}"
+
     # Create a new playlist
-    playlist_id = create_playlist()
-    
-    if not playlist_id:
-        return False, "Failed to create a new playlist."
-    
+    try:
+        playlist_title = "New Playlist"
+        playlist_description = "Created via API"
+        playlists_insert_response = youtube.playlists().insert(
+            part="snippet,status",
+            body=dict(
+                snippet=dict(
+                    title=playlist_title,
+                    description=playlist_description
+                ),
+                status=dict(
+                    privacyStatus="private"
+                )
+            )
+        ).execute()
+        playlist_id = playlists_insert_response["id"]
+    except HttpError as e:
+        return False, f"Failed to create a new playlist: {e}"
+
     # For each song name, search for the song and add it to the playlist
     for song_name in song_names:
-        video_id = search_song(song_name)
+        video_id = search_youtube_for_song(song_name, credentials)
         if video_id:
-            add_song_to_playlist(playlist_id, video_id)
+            try:
+                youtube.playlistItems().insert(
+                    part="snippet",
+                    body={
+                        'snippet': {
+                            'playlistId': playlist_id,
+                            'resourceId': {
+                                'kind': 'youtube#video',
+                                'videoId': video_id
+                            }
+                        }
+                    }
+                ).execute()
+            except HttpError as e:
+                success = False
+                message += f" Failed to add song '{song_name}' to the playlist: {e}"
         else:
             success = False
-            message += f" Failed to find or add song: {song_name}."
-    
-    return success, message
+            message += f" Failed to find song: {song_name}."
 
+    return success, message
     return add_video_response

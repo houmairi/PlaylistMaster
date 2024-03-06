@@ -83,3 +83,79 @@
 2024-03-05 21:13:14 WARNING:  * Debugger is active!
 2024-03-05 21:13:14 INFO:  * Debugger PIN: 968-812-317
 2024-03-05 21:13:14 INFO: 127.0.0.1 - - [05/Mar/2024 21:13:14] "GET / HTTP/1.1" 200 -
+2024-03-05 21:13:34 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-03-05 21:13:34 INFO: [33mPress CTRL+C to quit[0m
+2024-03-05 21:13:34 INFO:  * Restarting with stat
+2024-03-05 21:13:35 WARNING:  * Debugger is active!
+2024-03-05 21:13:35 INFO:  * Debugger PIN: 968-812-317
+2024-03-05 21:13:36 INFO: 127.0.0.1 - - [05/Mar/2024 21:13:36] "GET / HTTP/1.1" 200 -
+2024-03-05 21:13:42 INFO: 127.0.0.1 - - [05/Mar/2024 21:13:42] "GET / HTTP/1.1" 200 -
+2024-03-05 21:13:44 INFO: 127.0.0.1 - - [05/Mar/2024 21:13:44] "[32mGET /authorize HTTP/1.1[0m" 302 -
+2024-03-05 21:13:53 INFO: Successfully fetched token
+2024-03-05 21:13:53 INFO: Credentials saved to session
+2024-03-05 21:13:53 INFO: 127.0.0.1 - - [05/Mar/2024 21:13:53] "[32mGET /oauth2callback?state=oEVhWq3zwsssNnZXlTtB9jN3hljABb&code=4/0AeaYSHA6tnIH7T2FyKkeKBZxw0i-KXtVHM8crGsXWgMtfAZOIinKkCwtU5bbVcL2_lE74Q&scope=profile%20https://www.googleapis.com/auth/youtube.force-ssl%20https://www.googleapis.com/auth/youtube.readonly%20https://www.googleapis.com/auth/youtube%20openid%20https://www.googleapis.com/auth/userinfo.profile&authuser=0&prompt=consent HTTP/1.1[0m" 302 -
+2024-03-05 21:13:53 INFO: 127.0.0.1 - - [05/Mar/2024 21:13:53] "GET / HTTP/1.1" 200 -
+2024-03-05 23:28:46 INFO: 127.0.0.1 - - [05/Mar/2024 23:28:46] "GET / HTTP/1.1" 200 -
+2024-03-05 23:28:53 INFO: 127.0.0.1 - - [05/Mar/2024 23:28:53] "POST / HTTP/1.1" 200 -
+2024-03-06 04:19:16 INFO: 127.0.0.1 - - [06/Mar/2024 04:19:16] "GET / HTTP/1.1" 200 -
+2024-03-06 04:19:25 INFO: 127.0.0.1 - - [06/Mar/2024 04:19:25] "POST / HTTP/1.1" 200 -
+2024-03-06 04:29:34 INFO:  * Detected change in 'C:\\Users\\Niko\\Documents\\Repositorys\\PlaylistMaster\\app\\youtube_api.py', reloading
+2024-03-06 04:29:34 INFO:  * Restarting with stat
+2024-03-06 04:29:34 WARNING:  * Debugger is active!
+2024-03-06 04:29:34 INFO:  * Debugger PIN: 968-812-317
+2024-03-06 04:29:43 INFO: 127.0.0.1 - - [06/Mar/2024 04:29:43] "GET / HTTP/1.1" 200 -
+2024-03-06 04:29:44 INFO: 127.0.0.1 - - [06/Mar/2024 04:29:44] "[32mGET /authorize HTTP/1.1[0m" 302 -
+2024-03-06 04:29:50 INFO: Successfully fetched token
+2024-03-06 04:29:50 INFO: Credentials saved to session
+2024-03-06 04:29:50 INFO: 127.0.0.1 - - [06/Mar/2024 04:29:50] "[32mGET /oauth2callback?state=sK6EwoRXaLAz8BHa7yYoaRTSW7qsnD&code=4/0AeaYSHBjyoEK0D9fklu50RkwHscPxgW_zFfyaXolwwxwbccO_bBWQhD5YRh9cajVZuMUlQ&scope=profile%20https://www.googleapis.com/auth/youtube.force-ssl%20https://www.googleapis.com/auth/youtube.readonly%20https://www.googleapis.com/auth/youtube%20openid%20https://www.googleapis.com/auth/userinfo.profile&authuser=0&prompt=consent HTTP/1.1[0m" 302 -
+2024-03-06 04:29:50 INFO: 127.0.0.1 - - [06/Mar/2024 04:29:50] "GET / HTTP/1.1" 200 -
+2024-03-06 04:30:04 INFO: file_cache is only supported with oauth2client<4.0.0
+2024-03-06 04:30:04 INFO: 127.0.0.1 - - [06/Mar/2024 04:30:04] "[35m[1mPOST / HTTP/1.1[0m" 500 -
+2024-03-06 04:30:04 INFO: 127.0.0.1 - - [06/Mar/2024 04:30:04] "GET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2024-03-06 04:30:04 INFO: 127.0.0.1 - - [06/Mar/2024 04:30:04] "GET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2024-03-06 04:30:04 INFO: 127.0.0.1 - - [06/Mar/2024 04:30:04] "GET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2024-03-06 04:40:02 INFO:  * Detected change in 'C:\\Users\\Niko\\Documents\\Repositorys\\PlaylistMaster\\app\\youtube_api.py', reloading
+2024-03-06 04:40:02 INFO:  * Restarting with stat
+2024-03-06 04:40:02 WARNING:  * Debugger is active!
+2024-03-06 04:40:02 INFO:  * Debugger PIN: 968-812-317
+2024-03-06 04:40:05 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-03-06 04:40:05 INFO: [33mPress CTRL+C to quit[0m
+2024-03-06 04:40:05 INFO:  * Restarting with stat
+2024-03-06 04:40:05 WARNING:  * Debugger is active!
+2024-03-06 04:40:05 INFO:  * Debugger PIN: 968-812-317
+2024-03-06 04:40:10 INFO: 127.0.0.1 - - [06/Mar/2024 04:40:10] "GET / HTTP/1.1" 200 -
+2024-03-06 04:40:17 INFO: file_cache is only supported with oauth2client<4.0.0
+2024-03-06 04:40:18 INFO: file_cache is only supported with oauth2client<4.0.0
+2024-03-06 04:40:19 INFO: file_cache is only supported with oauth2client<4.0.0
+2024-03-06 04:40:20 INFO: 127.0.0.1 - - [06/Mar/2024 04:40:20] "[32mPOST / HTTP/1.1[0m" 302 -
+2024-03-06 04:40:20 INFO: 127.0.0.1 - - [06/Mar/2024 04:40:20] "GET / HTTP/1.1" 200 -
+2024-03-06 04:44:09 INFO: file_cache is only supported with oauth2client<4.0.0
+2024-03-06 04:44:10 INFO: file_cache is only supported with oauth2client<4.0.0
+2024-03-06 04:44:11 INFO: file_cache is only supported with oauth2client<4.0.0
+2024-03-06 04:44:11 INFO: file_cache is only supported with oauth2client<4.0.0
+2024-03-06 04:44:12 INFO: file_cache is only supported with oauth2client<4.0.0
+2024-03-06 04:44:13 INFO: file_cache is only supported with oauth2client<4.0.0
+2024-03-06 04:44:14 INFO: file_cache is only supported with oauth2client<4.0.0
+2024-03-06 04:44:15 INFO: file_cache is only supported with oauth2client<4.0.0
+2024-03-06 04:44:16 INFO: file_cache is only supported with oauth2client<4.0.0
+2024-03-06 04:44:17 INFO: file_cache is only supported with oauth2client<4.0.0
+2024-03-06 04:44:18 INFO: file_cache is only supported with oauth2client<4.0.0
+2024-03-06 04:44:19 INFO: file_cache is only supported with oauth2client<4.0.0
+2024-03-06 04:44:20 INFO: file_cache is only supported with oauth2client<4.0.0
+2024-03-06 04:44:21 INFO: file_cache is only supported with oauth2client<4.0.0
+2024-03-06 04:44:21 INFO: file_cache is only supported with oauth2client<4.0.0
+2024-03-06 04:44:22 INFO: file_cache is only supported with oauth2client<4.0.0
+2024-03-06 04:44:23 INFO: file_cache is only supported with oauth2client<4.0.0
+2024-03-06 04:44:24 INFO: file_cache is only supported with oauth2client<4.0.0
+2024-03-06 04:44:25 INFO: file_cache is only supported with oauth2client<4.0.0
+2024-03-06 04:44:26 INFO: file_cache is only supported with oauth2client<4.0.0
+2024-03-06 04:44:27 INFO: file_cache is only supported with oauth2client<4.0.0
+2024-03-06 04:44:28 INFO: file_cache is only supported with oauth2client<4.0.0
+2024-03-06 04:44:29 INFO: file_cache is only supported with oauth2client<4.0.0
+2024-03-06 04:44:29 INFO: file_cache is only supported with oauth2client<4.0.0
+2024-03-06 04:44:30 INFO: file_cache is only supported with oauth2client<4.0.0
+2024-03-06 04:44:31 INFO: 127.0.0.1 - - [06/Mar/2024 04:44:31] "[32mPOST / HTTP/1.1[0m" 302 -
+2024-03-06 04:44:31 INFO: 127.0.0.1 - - [06/Mar/2024 04:44:31] "GET / HTTP/1.1" 200 -
+2024-03-06 04:51:08 INFO:  * Detected change in 'C:\\Users\\Niko\\Documents\\Repositorys\\PlaylistMaster\\app\\youtube_api.py', reloading
