@@ -2,6 +2,7 @@ from flask import Blueprint, render_template, request, flash, redirect, url_for,
 from .youtube_api import initiate_oauth_flow, oauth2callback, create_playlist_with_name, get_user_info
 from google.oauth2.credentials import Credentials
 import json
+import logging
 
 bp = Blueprint('main', __name__)
 
@@ -27,6 +28,21 @@ def callback():
 
 @bp.route('/', methods=['GET', 'POST'])
 def index():
+    # Get the user's name from Google API
+    credentials_json = session.get('credentials')
+    if credentials_json:
+        try:
+            credentials = Credentials.from_authorized_user_info(
+                info=json.loads(credentials_json)
+            )
+            user_name = get_user_info(credentials)
+            logging.info(f'User name retrieved from API: {user_name}')
+        except Exception as e:
+            logging.error(f'Failed to get user info: {e}')
+            user_name = 'User'
+    else:
+        user_name = 'User'
+
     if request.method == 'POST':
         song_list = request.form.get('song_list')
         playlist_name = request.form.get('playlist_name')
@@ -47,20 +63,6 @@ def index():
                 return redirect(url_for('main.index'))
         else:
             flash('Please enter at least one song name.')
-
-    # Get the user's name from Google API
-    credentials_json = session.get('credentials')
-    if credentials_json:
-        try:
-            credentials = Credentials.from_authorized_user_info(
-                info=json.loads(credentials_json)
-            )
-            user_name = get_user_info(credentials)
-        except ValueError as e:
-            logging.error(f'Failed to deserialize credentials: {e}')
-            user_name = 'User'
-    else:
-        user_name = 'User'
 
     # If the method is GET or credentials are not set, show the main page
     return render_template('index.html', user_name=user_name)

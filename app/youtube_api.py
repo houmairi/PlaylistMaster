@@ -157,10 +157,19 @@ def get_user_info(credentials):
             'https://www.googleapis.com/auth/userinfo.profile',
             'openid'
         ]
-        credentials = credentials.with_scopes(oauth_scopes)
+        credentials = Credentials(
+            token=credentials.token,
+            refresh_token=credentials.refresh_token,
+            token_uri=credentials.token_uri,
+            client_id=credentials.client_id,
+            client_secret=credentials.client_secret,
+            scopes=oauth_scopes
+        )
         user_info_service = build('oauth2', 'v2', credentials=credentials)
         user_info = user_info_service.userinfo().get().execute()
-        return user_info.get('name', 'User')
+        user_name = user_info.get('name', 'User')
+        logging.info(f'Retrieved user name: {user_name}')
+        return user_name
     except Exception as e:
         logging.error(f'Failed to get user info: {e}')
         return 'User'
