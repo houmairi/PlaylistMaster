@@ -374,3 +374,146 @@
 2024-03-06 05:50:15 INFO: file_cache is only supported with oauth2client<4.0.0
 2024-03-06 05:50:16 INFO: 127.0.0.1 - - [06/Mar/2024 05:50:16] "[32mPOST / HTTP/1.1[0m" 302 -
 2024-03-06 05:50:16 INFO: 127.0.0.1 - - [06/Mar/2024 05:50:16] "GET / HTTP/1.1" 200 -
+2024-03-06 06:10:41 INFO: 127.0.0.1 - - [06/Mar/2024 06:10:41] "[32mGET /logout HTTP/1.1[0m" 302 -
+2024-03-06 06:10:41 INFO: 127.0.0.1 - - [06/Mar/2024 06:10:41] "GET / HTTP/1.1" 200 -
+2024-03-06 06:10:42 INFO: 127.0.0.1 - - [06/Mar/2024 06:10:42] "[32mGET /authorize HTTP/1.1[0m" 302 -
+2024-03-06 06:10:53 INFO: Successfully fetched token
+2024-03-06 06:10:53 INFO: Credentials saved to session
+2024-03-06 06:10:53 INFO: 127.0.0.1 - - [06/Mar/2024 06:10:53] "[32mGET /oauth2callback?state=2P03KN2TM23psAcorgoHwaslLgNfDR&code=4/0AeaYSHAi4goqtYnJgYNWhkFpY3lJe0s-p8VIlMe844HogjBmwA1Kut9GcmyVnfii4xiYpw&scope=profile%20https://www.googleapis.com/auth/youtube.force-ssl%20https://www.googleapis.com/auth/youtube.readonly%20https://www.googleapis.com/auth/youtube%20openid%20https://www.googleapis.com/auth/userinfo.profile&authuser=0&prompt=consent HTTP/1.1[0m" 302 -
+2024-03-06 06:10:53 INFO: 127.0.0.1 - - [06/Mar/2024 06:10:53] "GET / HTTP/1.1" 200 -
+2024-03-06 06:12:12 INFO: file_cache is only supported with oauth2client<4.0.0
+2024-03-06 06:12:13 INFO: file_cache is only supported with oauth2client<4.0.0
+2024-03-06 06:12:14 INFO: file_cache is only supported with oauth2client<4.0.0
+2024-03-06 06:12:15 INFO: file_cache is only supported with oauth2client<4.0.0
+2024-03-06 06:12:16 INFO: file_cache is only supported with oauth2client<4.0.0
+2024-03-06 06:12:17 INFO: file_cache is only supported with oauth2client<4.0.0
+2024-03-06 06:12:18 INFO: file_cache is only supported with oauth2client<4.0.0
+2024-03-06 06:12:19 INFO: file_cache is only supported with oauth2client<4.0.0
+2024-03-06 06:12:20 INFO: file_cache is only supported with oauth2client<4.0.0
+2024-03-06 06:12:21 INFO: file_cache is only supported with oauth2client<4.0.0
+2024-03-06 06:12:22 INFO: file_cache is only supported with oauth2client<4.0.0
+2024-03-06 06:12:23 INFO: file_cache is only supported with oauth2client<4.0.0
+2024-03-06 06:12:24 INFO: file_cache is only supported with oauth2client<4.0.0
+2024-03-06 06:12:25 INFO: file_cache is only supported with oauth2client<4.0.0
+2024-03-06 06:12:26 INFO: file_cache is only supported with oauth2client<4.0.0
+2024-03-06 06:12:27 INFO: file_cache is only supported with oauth2client<4.0.0
+2024-03-06 06:12:28 INFO: file_cache is only supported with oauth2client<4.0.0
+2024-03-06 06:12:29 INFO: file_cache is only supported with oauth2client<4.0.0
+2024-03-06 06:12:30 INFO: file_cache is only supported with oauth2client<4.0.0
+2024-03-06 06:12:31 INFO: file_cache is only supported with oauth2client<4.0.0
+2024-03-06 06:12:32 INFO: file_cache is only supported with oauth2client<4.0.0
+2024-03-06 06:12:33 INFO: file_cache is only supported with oauth2client<4.0.0
+2024-03-06 06:12:34 INFO: file_cache is only supported with oauth2client<4.0.0
+2024-03-06 06:12:35 INFO: file_cache is only supported with oauth2client<4.0.0
+2024-03-06 06:12:36 INFO: file_cache is only supported with oauth2client<4.0.0
+2024-03-06 06:12:37 INFO: file_cache is only supported with oauth2client<4.0.0
+2024-03-06 06:12:38 INFO: file_cache is only supported with oauth2client<4.0.0
+2024-03-06 06:12:39 INFO: file_cache is only supported with oauth2client<4.0.0
+2024-03-06 06:12:39 WARNING: Encountered 403 Forbidden with reason "quotaExceeded"
+2024-03-06 06:12:39 INFO: 127.0.0.1 - - [06/Mar/2024 06:12:39] "[35m[1mPOST / HTTP/1.1[0m" 500 -
+2024-03-06 06:12:39 INFO: 127.0.0.1 - - [06/Mar/2024 06:12:39] "[36mGET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2024-03-06 06:12:39 INFO: 127.0.0.1 - - [06/Mar/2024 06:12:39] "[36mGET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2024-03-06 06:12:39 INFO: 127.0.0.1 - - [06/Mar/2024 06:12:39] "[36mGET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2024-03-06 06:12:39 INFO: 127.0.0.1 - - [06/Mar/2024 06:12:39] "[36mGET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2024-03-06 06:14:25 INFO: file_cache is only supported with oauth2client<4.0.0
+2024-03-06 06:14:25 INFO: file_cache is only supported with oauth2client<4.0.0
+2024-03-06 06:14:26 WARNING: Encountered 403 Forbidden with reason "quotaExceeded"
+2024-03-06 06:14:26 INFO: file_cache is only supported with oauth2client<4.0.0
+2024-03-06 06:14:26 WARNING: Encountered 403 Forbidden with reason "quotaExceeded"
+2024-03-06 06:14:26 INFO: 127.0.0.1 - - [06/Mar/2024 06:14:26] "[35m[1mPOST / HTTP/1.1[0m" 500 -
+2024-03-06 06:14:26 INFO: 127.0.0.1 - - [06/Mar/2024 06:14:26] "[36mGET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2024-03-06 06:14:26 INFO: 127.0.0.1 - - [06/Mar/2024 06:14:26] "[36mGET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2024-03-06 06:14:26 INFO: 127.0.0.1 - - [06/Mar/2024 06:14:26] "[36mGET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2024-03-06 06:14:26 INFO: 127.0.0.1 - - [06/Mar/2024 06:14:26] "[36mGET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2024-03-06 13:38:50 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-03-06 13:38:50 INFO: [33mPress CTRL+C to quit[0m
+2024-03-06 13:38:50 INFO:  * Restarting with stat
+2024-03-06 13:38:50 WARNING:  * Debugger is active!
+2024-03-06 13:38:50 INFO:  * Debugger PIN: 968-812-317
+2024-03-06 13:38:59 INFO: 127.0.0.1 - - [06/Mar/2024 13:38:59] "GET / HTTP/1.1" 200 -
+2024-03-06 13:38:59 INFO: 127.0.0.1 - - [06/Mar/2024 13:38:59] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2024-03-06 13:39:01 INFO: 127.0.0.1 - - [06/Mar/2024 13:39:01] "[32mGET /authorize HTTP/1.1[0m" 302 -
+2024-03-06 13:40:13 INFO: Successfully fetched token
+2024-03-06 13:40:13 INFO: Credentials saved to session
+2024-03-06 13:40:13 INFO: 127.0.0.1 - - [06/Mar/2024 13:40:13] "[32mGET /oauth2callback?state=dOcL37SVQbvLYMJeAs9RfIDd3tR5Uh&code=4/0AeaYSHDZvTbD4acxsGuGs_rKUNUSCQ9Ki3hUANX1tZixdYmNsfOufb5CEocJBxoS3ywitA&scope=profile%20https://www.googleapis.com/auth/youtube.force-ssl%20https://www.googleapis.com/auth/youtube.readonly%20https://www.googleapis.com/auth/youtube%20openid%20https://www.googleapis.com/auth/userinfo.profile&authuser=0&prompt=consent HTTP/1.1[0m" 302 -
+2024-03-06 13:40:13 INFO: 127.0.0.1 - - [06/Mar/2024 13:40:13] "GET / HTTP/1.1" 200 -
+2024-03-06 13:42:09 INFO:  * Detected change in 'C:\\Users\\Niko\\Documents\\Repositorys\\PlaylistMaster\\app\\youtube_api.py', reloading
+2024-03-06 13:42:09 INFO:  * Restarting with stat
+2024-03-06 13:42:09 WARNING:  * Debugger is active!
+2024-03-06 13:42:09 INFO:  * Debugger PIN: 968-812-317
+2024-03-06 13:42:38 INFO:  * Detected change in 'C:\\Users\\Niko\\Documents\\Repositorys\\PlaylistMaster\\app\\routes.py', reloading
+2024-03-06 13:42:38 INFO:  * Restarting with stat
+2024-03-06 13:42:39 WARNING:  * Debugger is active!
+2024-03-06 13:42:39 INFO:  * Debugger PIN: 968-812-317
+2024-03-06 13:42:44 INFO:  * Detected change in 'C:\\Users\\Niko\\Documents\\Repositorys\\PlaylistMaster\\app\\youtube_api.py', reloading
+2024-03-06 13:42:44 INFO:  * Restarting with stat
+2024-03-06 13:42:44 WARNING:  * Debugger is active!
+2024-03-06 13:42:44 INFO:  * Debugger PIN: 968-812-317
+2024-03-06 13:42:53 INFO: 127.0.0.1 - - [06/Mar/2024 13:42:53] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2024-03-06 13:42:53 INFO: 127.0.0.1 - - [06/Mar/2024 13:42:53] "[36mGET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2024-03-06 13:42:53 INFO: 127.0.0.1 - - [06/Mar/2024 13:42:53] "[36mGET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2024-03-06 13:42:53 INFO: 127.0.0.1 - - [06/Mar/2024 13:42:53] "[36mGET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2024-03-06 13:42:53 INFO: 127.0.0.1 - - [06/Mar/2024 13:42:53] "[36mGET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2024-03-06 13:52:04 INFO:  * Detected change in 'C:\\Users\\Niko\\Documents\\Repositorys\\PlaylistMaster\\app\\routes.py', reloading
+2024-03-06 13:52:04 INFO:  * Restarting with stat
+2024-03-06 13:52:04 WARNING:  * Debugger is active!
+2024-03-06 13:52:04 INFO:  * Debugger PIN: 968-812-317
+2024-03-06 13:52:32 INFO: 127.0.0.1 - - [06/Mar/2024 13:52:32] "GET / HTTP/1.1" 200 -
+2024-03-06 13:52:33 INFO: 127.0.0.1 - - [06/Mar/2024 13:52:33] "[32mGET /authorize HTTP/1.1[0m" 302 -
+2024-03-06 13:52:38 INFO: Successfully fetched token
+2024-03-06 13:52:38 INFO: Credentials saved to session
+2024-03-06 13:52:38 INFO: 127.0.0.1 - - [06/Mar/2024 13:52:38] "[32mGET /oauth2callback?state=HaV4uKuyyxpUzvbi8NVfX5S2nAbsFp&code=4/0AeaYSHBkEgFYoBCdsDUK89O7j2QHmGInSqFoThBW61z_2L09bifqVnw-4Qf2ksaaJOl_FQ&scope=profile%20https://www.googleapis.com/auth/youtube.force-ssl%20https://www.googleapis.com/auth/youtube.readonly%20https://www.googleapis.com/auth/youtube%20openid%20https://www.googleapis.com/auth/userinfo.profile&authuser=0&prompt=consent HTTP/1.1[0m" 302 -
+2024-03-06 13:52:38 INFO: 127.0.0.1 - - [06/Mar/2024 13:52:38] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2024-03-06 13:52:38 INFO: 127.0.0.1 - - [06/Mar/2024 13:52:38] "[36mGET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2024-03-06 13:52:38 INFO: 127.0.0.1 - - [06/Mar/2024 13:52:38] "[36mGET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2024-03-06 13:52:39 INFO: 127.0.0.1 - - [06/Mar/2024 13:52:39] "[36mGET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2024-03-06 13:52:39 INFO: 127.0.0.1 - - [06/Mar/2024 13:52:39] "[36mGET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2024-03-06 13:53:01 INFO:  * Detected change in 'C:\\Users\\Niko\\Documents\\Repositorys\\PlaylistMaster\\app\\routes.py', reloading
+2024-03-06 13:53:01 INFO:  * Restarting with stat
+2024-03-06 13:53:01 WARNING:  * Debugger is active!
+2024-03-06 13:53:01 INFO:  * Debugger PIN: 968-812-317
+2024-03-06 13:53:02 INFO: 127.0.0.1 - - [06/Mar/2024 13:53:02] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2024-03-06 13:53:02 INFO: 127.0.0.1 - - [06/Mar/2024 13:53:02] "[36mGET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2024-03-06 13:53:02 INFO: 127.0.0.1 - - [06/Mar/2024 13:53:02] "[36mGET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2024-03-06 13:53:02 INFO: 127.0.0.1 - - [06/Mar/2024 13:53:02] "[36mGET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2024-03-06 13:53:02 INFO: 127.0.0.1 - - [06/Mar/2024 13:53:02] "[36mGET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2024-03-06 13:54:29 INFO:  * Detected change in 'C:\\Users\\Niko\\Documents\\Repositorys\\PlaylistMaster\\app\\routes.py', reloading
+2024-03-06 13:54:29 INFO:  * Restarting with stat
+2024-03-06 13:54:29 WARNING:  * Debugger is active!
+2024-03-06 13:54:29 INFO:  * Debugger PIN: 968-812-317
+2024-03-06 13:54:30 ERROR: Failed to get user info: 'Credentials' object has no attribute 'with_scopes'
+2024-03-06 13:54:30 INFO: 127.0.0.1 - - [06/Mar/2024 13:54:30] "GET / HTTP/1.1" 200 -
+2024-03-06 13:54:59 INFO: 127.0.0.1 - - [06/Mar/2024 13:54:59] "[35m[1mPOST / HTTP/1.1[0m" 500 -
+2024-03-06 13:54:59 INFO: 127.0.0.1 - - [06/Mar/2024 13:54:59] "[36mGET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2024-03-06 13:54:59 INFO: 127.0.0.1 - - [06/Mar/2024 13:54:59] "[36mGET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2024-03-06 13:54:59 INFO: 127.0.0.1 - - [06/Mar/2024 13:54:59] "[36mGET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2024-03-06 13:54:59 INFO: 127.0.0.1 - - [06/Mar/2024 13:54:59] "[36mGET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2024-03-06 13:56:32 INFO:  * Detected change in 'C:\\Users\\Niko\\Documents\\Repositorys\\PlaylistMaster\\app\\routes.py', reloading
+2024-03-06 13:56:32 INFO:  * Restarting with stat
+2024-03-06 13:56:32 WARNING:  * Debugger is active!
+2024-03-06 13:56:32 INFO:  * Debugger PIN: 968-812-317
+2024-03-06 13:59:19 INFO:  * Detected change in 'C:\\Users\\Niko\\Documents\\Repositorys\\PlaylistMaster\\app\\youtube_api.py', reloading
+2024-03-06 13:59:19 INFO:  * Restarting with stat
+2024-03-06 13:59:20 WARNING:  * Debugger is active!
+2024-03-06 13:59:20 INFO:  * Debugger PIN: 968-812-317
+2024-03-06 13:59:29 INFO: 127.0.0.1 - - [06/Mar/2024 13:59:29] "[32mPOST / HTTP/1.1[0m" 302 -
+2024-03-06 13:59:29 INFO: 127.0.0.1 - - [06/Mar/2024 13:59:29] "[32mGET /authorize HTTP/1.1[0m" 302 -
+2024-03-06 13:59:35 INFO: Successfully fetched token
+2024-03-06 13:59:35 INFO: Credentials saved to session
+2024-03-06 13:59:35 INFO: 127.0.0.1 - - [06/Mar/2024 13:59:35] "[32mGET /oauth2callback?state=5nItTzonX3OiDMreNkCQUyGa4WJ2pr&code=4/0AeaYSHD5dzxY40pN8vTqP3jM2jO1poXQBF1Aakqfge_9TnrtmqUOnd_x39vPjqKV9JPQxQ&scope=profile%20https://www.googleapis.com/auth/youtube.force-ssl%20https://www.googleapis.com/auth/youtube.readonly%20https://www.googleapis.com/auth/youtube%20openid%20https://www.googleapis.com/auth/userinfo.profile&authuser=0&prompt=consent HTTP/1.1[0m" 302 -
+2024-03-06 13:59:35 ERROR: Failed to get user info: 'Credentials' object has no attribute 'with_scopes'
+2024-03-06 13:59:35 INFO: 127.0.0.1 - - [06/Mar/2024 13:59:35] "GET / HTTP/1.1" 200 -
+2024-03-06 13:59:57 INFO: file_cache is only supported with oauth2client<4.0.0
+2024-03-06 13:59:58 INFO: file_cache is only supported with oauth2client<4.0.0
+2024-03-06 13:59:59 INFO: file_cache is only supported with oauth2client<4.0.0
+2024-03-06 14:00:00 INFO: 127.0.0.1 - - [06/Mar/2024 14:00:00] "[32mPOST / HTTP/1.1[0m" 302 -
+2024-03-06 14:00:00 ERROR: Failed to get user info: 'Credentials' object has no attribute 'with_scopes'
+2024-03-06 14:00:00 INFO: 127.0.0.1 - - [06/Mar/2024 14:00:00] "GET / HTTP/1.1" 200 -
+2024-03-06 14:06:07 INFO: 127.0.0.1 - - [06/Mar/2024 14:06:07] "GET / HTTP/1.1" 200 -
+2024-03-06 14:06:08 INFO: 127.0.0.1 - - [06/Mar/2024 14:06:08] "[32mGET /authorize HTTP/1.1[0m" 302 -
+2024-03-06 14:06:12 INFO: Successfully fetched token
+2024-03-06 14:06:12 INFO: Credentials saved to session
+2024-03-06 14:06:12 INFO: 127.0.0.1 - - [06/Mar/2024 14:06:12] "[32mGET /oauth2callback?state=MQWISFnuK5rHzOi5vhsxz5iO9oZdVM&code=4/0AeaYSHC1ZKaYrPhq0raFo353_owBNyB3kNwsuK__ZepxUrS0-UCRFEdR-qjTGO12atvHNw&scope=profile%20https://www.googleapis.com/auth/youtube.force-ssl%20https://www.googleapis.com/auth/youtube.readonly%20https://www.googleapis.com/auth/youtube%20openid%20https://www.googleapis.com/auth/userinfo.profile&authuser=0&prompt=consent HTTP/1.1[0m" 302 -
+2024-03-06 14:06:12 ERROR: Failed to get user info: 'Credentials' object has no attribute 'with_scopes'
+2024-03-06 14:06:12 INFO: 127.0.0.1 - - [06/Mar/2024 14:06:12] "GET / HTTP/1.1" 200 -

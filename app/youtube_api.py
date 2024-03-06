@@ -149,10 +149,26 @@ def add_video_to_playlist(credentials, playlist_id, video_id):
         }
     ).execute()
 
-def create_playlist_with_songs(song_names):
-    """Create a playlist and add the provided songs to it."""
+def get_user_info(credentials):
+    """Get the user's name from the Google API."""
+    try:
+        oauth_scopes = [
+            'https://www.googleapis.com/auth/userinfo.email',
+            'https://www.googleapis.com/auth/userinfo.profile',
+            'openid'
+        ]
+        credentials = credentials.with_scopes(oauth_scopes)
+        user_info_service = build('oauth2', 'v2', credentials=credentials)
+        user_info = user_info_service.userinfo().get().execute()
+        return user_info.get('name', 'User')
+    except Exception as e:
+        logging.error(f'Failed to get user info: {e}')
+        return 'User'
+
+def create_playlist_with_name(song_names, playlist_name):
+    """Create a playlist with a custom name and add the provided songs to it."""
     success = True
-    message = "Playlist created successfully!"
+    message = f"Playlist '{playlist_name}' created successfully!"
 
     # Get the authenticated YouTube service
     credentials_json = session.get('credentials')
@@ -172,16 +188,14 @@ def create_playlist_with_songs(song_names):
     except HttpError as e:
         return False, f"Failed to build YouTube client: {e}"
 
-    # Create a new playlist
+    # Create a new playlist with the provided name
     try:
-        playlist_title = "New Playlist"
-        playlist_description = "Created via API"
         playlists_insert_response = youtube.playlists().insert(
             part="snippet,status",
             body=dict(
                 snippet=dict(
-                    title=playlist_title,
-                    description=playlist_description
+                    title=playlist_name,
+                    description="Created via API"
                 ),
                 status=dict(
                     privacyStatus="private"

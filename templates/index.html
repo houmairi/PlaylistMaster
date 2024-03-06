@@ -6,9 +6,11 @@
 </head>
 <body>
     {% if session.get('credentials') %}
-        <h1>Hi {{ session.get('user_name', 'User') }}, Create Playlist from Song List</h1>
+        <h1>Hi {{ user_name }}, Create Playlist from Song List</h1>
         <form method="post">
-            <textarea name="song_list" rows="10" cols="50" placeholder="Enter songs, one per line..."></textarea><br>
+            <label for="playlist_name">Playlist Name:</label>
+            <input type="text" id="playlist_name" name="playlist_name" placeholder="Enter playlist name" required><br><br>
+            <textarea name="song_list" rows="10" cols="50" placeholder="Enter songs, one per line..." required></textarea><br>
             <button type="submit">Create Playlist</button>
         </form>
         <a href="{{ url_for('main.logout') }}">Logout</a>
