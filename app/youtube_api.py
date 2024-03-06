@@ -9,9 +9,9 @@ from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 from google.auth.exceptions import RefreshError
 from oauthlib.oauth2 import OAuth2Error
-import logging 
+import logging
 import json
-
+import google.auth.transport.requests
 
 # YouTube API service endpoints
 YOUTUBE_API_SERVICE_NAME = 'youtube'
@@ -58,16 +58,12 @@ def oauth2callback():
 
         # Serialize the credentials to a JSON string
         credentials_json = flow.credentials.to_json()
-        
-        # DOESNT WORK YET
-        #user_info = fetch_user_info(flow.credentials)
-        #session['user_name'] = user_info.get('name', 'User')  # Default to "User" if name not available
 
         # Store the serialized credentials in the session
         session['credentials'] = credentials_json
         logging.info('Credentials saved to session')
-        
-    except OAuth2Error as e: 
+
+    except OAuth2Error as e:
         logging.error(f'OAuth2Error during authentication: {e.description}')
         flash(f'Failed to complete authentication: {e.description}')
         return redirect(url_for('main.index'))
@@ -153,32 +149,12 @@ def add_video_to_playlist(credentials, playlist_id, video_id):
         }
     ).execute()
 
-def authenticate_youtube_api():
-    """Authenticate with the YouTube API and return an authorized service object."""
-    # Placeholder: Implement the actual authentication logic here
-    return None
-
-def search_song(song_name):
-    """Search for a song on YouTube and return the video ID of the first result."""
-    # Placeholder: Implement the actual search logic here
-    return "video_id_mock"
-
-def create_playlist(title="New Playlist", description="Created via API"):
-    """Create a new YouTube playlist and return its ID."""
-    # Placeholder: Implement the actual playlist creation logic here
-    return "playlist_id_mock"
-
-def add_song_to_playlist(playlist_id, video_id):
-    """Add a song to the specified YouTube playlist."""
-    # Placeholder: Implement the actual logic to add a song to a playlist here
-    pass
-
 def create_playlist_with_songs(song_names):
     """Create a playlist and add the provided songs to it."""
     success = True
     message = "Playlist created successfully!"
 
-    # Get the serialized credentials from the session
+    # Get the authenticated YouTube service
     credentials_json = session.get('credentials')
     if not credentials_json:
         return False, "Failed to get user credentials from the session."
@@ -241,4 +217,22 @@ def create_playlist_with_songs(song_names):
             message += f" Failed to find song: {song_name}."
 
     return success, message
-    return add_video_response
+
+def revoke_credentials(credentials):
+    try:
+        request = google.auth.transport.requests.Request()
+        credentials.revoke(request)
+    except Exception as e:
+        logging.error(f'Failed to revoke credentials: {e}')
+
+def logout():
+    credentials_json = session.get('credentials')
+    if credentials_json:
+        try:
+            credentials = Credentials.from_authorized_user_info(
+                info=json.loads(credentials_json)
+            )
+            revoke_credentials(credentials)
+        except ValueError as e:
+            logging.error(f'Failed to deserialize credentials: {e}')
+    session.clear()

@@ -47,3 +47,10 @@ def index():
 
     # If the method is GET or credentials are not set, show the main page
     return render_template('index.html')
+
+@bp.route('/logout')
+def logout():
+    # Remove the credentials from the session
+    session.pop('credentials', None)
+    flash('You have been logged out.')
+    return redirect(url_for('main.index'))

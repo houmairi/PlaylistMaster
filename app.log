@@ -159,3 +159,96 @@
 2024-03-06 04:44:31 INFO: 127.0.0.1 - - [06/Mar/2024 04:44:31] "[32mPOST / HTTP/1.1[0m" 302 -
 2024-03-06 04:44:31 INFO: 127.0.0.1 - - [06/Mar/2024 04:44:31] "GET / HTTP/1.1" 200 -
 2024-03-06 04:51:08 INFO:  * Detected change in 'C:\\Users\\Niko\\Documents\\Repositorys\\PlaylistMaster\\app\\youtube_api.py', reloading
+2024-03-06 04:51:08 INFO:  * Restarting with stat
+2024-03-06 04:51:08 WARNING:  * Debugger is active!
+2024-03-06 04:51:08 INFO:  * Debugger PIN: 968-812-317
+2024-03-06 04:55:24 INFO:  * Detected change in 'C:\\Users\\Niko\\Documents\\Repositorys\\PlaylistMaster\\app\\routes.py', reloading
+2024-03-06 04:55:24 INFO:  * Restarting with stat
+2024-03-06 04:55:24 WARNING:  * Debugger is active!
+2024-03-06 04:55:24 INFO:  * Debugger PIN: 968-812-317
+2024-03-06 04:56:15 INFO:  * Detected change in 'C:\\Users\\Niko\\Documents\\Repositorys\\PlaylistMaster\\app\\youtube_api.py', reloading
+2024-03-06 04:56:15 INFO:  * Restarting with stat
+2024-03-06 04:56:15 WARNING:  * Debugger is active!
+2024-03-06 04:56:15 INFO:  * Debugger PIN: 968-812-317
+2024-03-06 04:56:39 INFO:  * Detected change in 'C:\\Users\\Niko\\Documents\\Repositorys\\PlaylistMaster\\app\\youtube_api.py', reloading
+2024-03-06 04:56:39 INFO:  * Restarting with stat
+2024-03-06 04:56:40 WARNING:  * Debugger is active!
+2024-03-06 04:56:40 INFO:  * Debugger PIN: 968-812-317
+2024-03-06 04:57:31 INFO:  * Detected change in 'C:\\Users\\Niko\\Documents\\Repositorys\\PlaylistMaster\\app\\youtube_api.py', reloading
+2024-03-06 04:57:31 INFO:  * Restarting with stat
+2024-03-06 04:58:25 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-03-06 04:58:25 INFO: [33mPress CTRL+C to quit[0m
+2024-03-06 04:58:25 INFO:  * Restarting with stat
+2024-03-06 04:58:26 WARNING:  * Debugger is active!
+2024-03-06 04:58:26 INFO:  * Debugger PIN: 968-812-317
+2024-03-06 04:58:32 INFO: 127.0.0.1 - - [06/Mar/2024 04:58:32] "GET / HTTP/1.1" 200 -
+2024-03-06 04:58:48 INFO: 127.0.0.1 - - [06/Mar/2024 04:58:48] "[32mPOST / HTTP/1.1[0m" 302 -
+2024-03-06 04:58:48 INFO: 127.0.0.1 - - [06/Mar/2024 04:58:48] "[32mGET /authorize HTTP/1.1[0m" 302 -
+2024-03-06 04:58:52 INFO: 127.0.0.1 - - [06/Mar/2024 04:58:52] "GET / HTTP/1.1" 200 -
+2024-03-06 04:58:53 INFO: 127.0.0.1 - - [06/Mar/2024 04:58:53] "[32mGET /authorize HTTP/1.1[0m" 302 -
+2024-03-06 04:59:04 INFO: Successfully fetched token
+2024-03-06 04:59:04 INFO: Credentials saved to session
+2024-03-06 04:59:04 ERROR: Failed to revoke credentials: 'Credentials' object has no attribute 'revoke'
+2024-03-06 04:59:04 INFO: 127.0.0.1 - - [06/Mar/2024 04:59:04] "[32mGET /oauth2callback?state=mjBm6rnY2ls7SDNjeTkJoCNoep2mB9&code=4/0AeaYSHBc5VdP3A0ulvyU6a6-3R0N_4gAYHGEN4j82vK_0RD0rQjdCA76axiSVphO1ebHww&scope=profile%20https://www.googleapis.com/auth/youtube.force-ssl%20https://www.googleapis.com/auth/youtube.readonly%20https://www.googleapis.com/auth/youtube%20openid%20https://www.googleapis.com/auth/userinfo.profile&authuser=0&prompt=consent HTTP/1.1[0m" 302 -
+2024-03-06 04:59:04 INFO: 127.0.0.1 - - [06/Mar/2024 04:59:04] "[32mGET /authorize HTTP/1.1[0m" 302 -
+2024-03-06 04:59:15 INFO: Successfully fetched token
+2024-03-06 04:59:15 INFO: Credentials saved to session
+2024-03-06 04:59:15 ERROR: Failed to revoke credentials: 'Credentials' object has no attribute 'revoke'
+2024-03-06 04:59:15 INFO: 127.0.0.1 - - [06/Mar/2024 04:59:15] "[32mGET /oauth2callback?state=7QrinCKO2LVn2HMFDbBbvx5IdPefRg&code=4/0AeaYSHCMWST6c-SYgBlSokgG2If1QbQ3ljtA4-cgsDdMlUmVpPYGNNlc_V4Lgd6-KwBpzg&scope=profile%20https://www.googleapis.com/auth/youtube.force-ssl%20https://www.googleapis.com/auth/youtube.readonly%20https://www.googleapis.com/auth/youtube%20openid%20https://www.googleapis.com/auth/userinfo.profile&authuser=0&prompt=consent HTTP/1.1[0m" 302 -
+2024-03-06 04:59:15 INFO: 127.0.0.1 - - [06/Mar/2024 04:59:15] "[32mGET /authorize HTTP/1.1[0m" 302 -
+2024-03-06 04:59:18 INFO: 127.0.0.1 - - [06/Mar/2024 04:59:18] "GET / HTTP/1.1" 200 -
+2024-03-06 04:59:18 INFO: 127.0.0.1 - - [06/Mar/2024 04:59:18] "GET / HTTP/1.1" 200 -
+2024-03-06 04:59:19 INFO: 127.0.0.1 - - [06/Mar/2024 04:59:19] "GET / HTTP/1.1" 200 -
+2024-03-06 04:59:33 INFO: 127.0.0.1 - - [06/Mar/2024 04:59:33] "GET / HTTP/1.1" 200 -
+2024-03-06 04:59:35 INFO: 127.0.0.1 - - [06/Mar/2024 04:59:35] "[32mGET /authorize HTTP/1.1[0m" 302 -
+2024-03-06 04:59:42 INFO: Successfully fetched token
+2024-03-06 04:59:42 INFO: Credentials saved to session
+2024-03-06 04:59:42 ERROR: Failed to revoke credentials: 'Credentials' object has no attribute 'revoke'
+2024-03-06 04:59:42 INFO: 127.0.0.1 - - [06/Mar/2024 04:59:42] "[32mGET /oauth2callback?state=3CYlKW9j0lOScY9FLB1bc2amubePb0&code=4/0AeaYSHCQIGUaOlWDsaEwAE90boH_VNc1bI8dg7c_sk4mTMKk6Gr_4dPIUCWEvSwDXwlYrg&scope=profile%20https://www.googleapis.com/auth/youtube.force-ssl%20https://www.googleapis.com/auth/youtube.readonly%20https://www.googleapis.com/auth/youtube%20openid%20https://www.googleapis.com/auth/userinfo.profile&authuser=0&prompt=consent HTTP/1.1[0m" 302 -
+2024-03-06 04:59:42 INFO: 127.0.0.1 - - [06/Mar/2024 04:59:42] "[32mGET /authorize HTTP/1.1[0m" 302 -
+2024-03-06 04:59:48 INFO: Successfully fetched token
+2024-03-06 04:59:48 INFO: Credentials saved to session
+2024-03-06 04:59:48 ERROR: Failed to revoke credentials: 'Credentials' object has no attribute 'revoke'
+2024-03-06 04:59:48 INFO: 127.0.0.1 - - [06/Mar/2024 04:59:48] "[32mGET /oauth2callback?state=34NapG43ZH8ps4sLtiBa1zlii53Ghn&code=4/0AeaYSHBFHcPzgU8368h_EQcZcUS3JipQR7y-AplIxhxtiFuKFgI4X1pe1o7eb0CwYmCPbA&scope=profile%20https://www.googleapis.com/auth/youtube.force-ssl%20https://www.googleapis.com/auth/youtube.readonly%20https://www.googleapis.com/auth/youtube%20openid%20https://www.googleapis.com/auth/userinfo.profile&authuser=0&prompt=consent HTTP/1.1[0m" 302 -
+2024-03-06 04:59:48 INFO: 127.0.0.1 - - [06/Mar/2024 04:59:48] "[32mGET /authorize HTTP/1.1[0m" 302 -
+2024-03-06 05:00:07 INFO:  * Detected change in 'C:\\Users\\Niko\\Documents\\Repositorys\\PlaylistMaster\\app\\youtube_api.py', reloading
+2024-03-06 05:00:07 INFO:  * Restarting with stat
+2024-03-06 05:00:07 WARNING:  * Debugger is active!
+2024-03-06 05:00:07 INFO:  * Debugger PIN: 968-812-317
+2024-03-06 05:00:09 INFO: 127.0.0.1 - - [06/Mar/2024 05:00:09] "GET / HTTP/1.1" 200 -
+2024-03-06 05:00:11 INFO: 127.0.0.1 - - [06/Mar/2024 05:00:11] "[32mGET /authorize HTTP/1.1[0m" 302 -
+2024-03-06 05:00:17 INFO: Successfully fetched token
+2024-03-06 05:00:17 INFO: Credentials saved to session
+2024-03-06 05:00:17 INFO: 127.0.0.1 - - [06/Mar/2024 05:00:17] "[32mGET /oauth2callback?state=UccKMrRuvZP5nbRBEOBmIZgOrrp2I0&code=4/0AeaYSHC8uvR5gQhr8bq9Gl7_hYPyd2ieGgc52N6I5d9Q-AtlV0t9alUWZTS_4TaJ4fqt6A&scope=profile%20https://www.googleapis.com/auth/youtube.force-ssl%20https://www.googleapis.com/auth/youtube.readonly%20https://www.googleapis.com/auth/youtube%20openid%20https://www.googleapis.com/auth/userinfo.profile&authuser=0&prompt=consent HTTP/1.1[0m" 302 -
+2024-03-06 05:00:17 INFO: 127.0.0.1 - - [06/Mar/2024 05:00:17] "GET / HTTP/1.1" 200 -
+2024-03-06 05:02:51 INFO:  * Detected change in 'C:\\Users\\Niko\\Documents\\Repositorys\\PlaylistMaster\\app\\youtube_api.py', reloading
+2024-03-06 05:02:51 INFO:  * Restarting with stat
+2024-03-06 05:02:51 WARNING:  * Debugger is active!
+2024-03-06 05:02:51 INFO:  * Debugger PIN: 968-812-317
+2024-03-06 05:03:07 INFO: 127.0.0.1 - - [06/Mar/2024 05:03:07] "GET / HTTP/1.1" 200 -
+2024-03-06 05:03:27 INFO: 127.0.0.1 - - [06/Mar/2024 05:03:27] "GET / HTTP/1.1" 200 -
+2024-03-06 05:03:29 INFO: 127.0.0.1 - - [06/Mar/2024 05:03:29] "GET / HTTP/1.1" 200 -
+2024-03-06 05:03:29 INFO: 127.0.0.1 - - [06/Mar/2024 05:03:29] "GET / HTTP/1.1" 200 -
+2024-03-06 05:03:43 INFO: 127.0.0.1 - - [06/Mar/2024 05:03:43] "GET / HTTP/1.1" 200 -
+2024-03-06 05:03:44 INFO: 127.0.0.1 - - [06/Mar/2024 05:03:44] "[32mGET /authorize HTTP/1.1[0m" 302 -
+2024-03-06 05:04:55 INFO: Successfully fetched token
+2024-03-06 05:04:55 INFO: Credentials saved to session
+2024-03-06 05:04:55 INFO: 127.0.0.1 - - [06/Mar/2024 05:04:55] "[32mGET /oauth2callback?state=7YO9OCIL3Dog9eKEtse9bmcU8YEcaR&code=4/0AeaYSHAsoMt0IKERJoP5ds6WZXkkKqNBis2Iw_bB_pFS1DMglYyW220ck3yzrBd2ZYBQIQ&scope=profile%20https://www.googleapis.com/auth/youtube.force-ssl%20https://www.googleapis.com/auth/youtube.readonly%20https://www.googleapis.com/auth/youtube%20openid%20https://www.googleapis.com/auth/userinfo.profile&authuser=0&prompt=consent HTTP/1.1[0m" 302 -
+2024-03-06 05:04:55 INFO: 127.0.0.1 - - [06/Mar/2024 05:04:55] "GET / HTTP/1.1" 200 -
+2024-03-06 05:13:28 INFO: file_cache is only supported with oauth2client<4.0.0
+2024-03-06 05:13:29 INFO: file_cache is only supported with oauth2client<4.0.0
+2024-03-06 05:13:30 INFO: file_cache is only supported with oauth2client<4.0.0
+2024-03-06 05:13:31 INFO: file_cache is only supported with oauth2client<4.0.0
+2024-03-06 05:13:32 INFO: file_cache is only supported with oauth2client<4.0.0
+2024-03-06 05:13:33 INFO: file_cache is only supported with oauth2client<4.0.0
+2024-03-06 05:13:34 INFO: file_cache is only supported with oauth2client<4.0.0
+2024-03-06 05:13:35 INFO: file_cache is only supported with oauth2client<4.0.0
+2024-03-06 05:13:36 INFO: 127.0.0.1 - - [06/Mar/2024 05:13:36] "[32mPOST / HTTP/1.1[0m" 302 -
+2024-03-06 05:13:36 INFO: 127.0.0.1 - - [06/Mar/2024 05:13:36] "GET / HTTP/1.1" 200 -
+2024-03-06 05:27:33 INFO: 127.0.0.1 - - [06/Mar/2024 05:27:33] "GET / HTTP/1.1" 200 -
+2024-03-06 05:27:41 INFO:  * Detected change in 'C:\\Users\\Niko\\Documents\\Repositorys\\PlaylistMaster\\app\\youtube_api.py', reloading
+2024-03-06 05:27:41 INFO:  * Restarting with stat
+2024-03-06 05:27:41 WARNING:  * Debugger is active!
+2024-03-06 05:27:41 INFO:  * Debugger PIN: 968-812-317
+2024-03-06 05:27:44 INFO:  * Detected change in 'C:\\Users\\Niko\\Documents\\Repositorys\\PlaylistMaster\\app\\youtube_api.py', reloading
