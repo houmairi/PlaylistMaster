@@ -11,17 +11,12 @@
         {% for playlist in playlists %}
             <li>
                 {{ playlist.snippet.title }}
-                <form action="{{ url_for('main.delete_playlist_route', playlist_id=playlist.id) }}" method="post">
+                <form action="{{ url_for('main.remove_playlist_route', playlist_id=playlist.id) }}" method="post">
                     <button type="submit">Delete</button>
                 </form>
                 <form action="{{ url_for('main.rename_playlist_route', playlist_id=playlist.id) }}" method="post">
                     <input type="text" name="new_title" placeholder="New title">
                     <button type="submit">Rename</button>
-                </form>
-                <!-- Add a form to remove a video from the playlist -->
-                <form action="{{ url_for('main.remove_video_route', playlist_id=playlist.id, video_id='VIDEO_ID') }}" method="post">
-                    <input type="text" name="video_id" placeholder="Video ID">
-                    <button type="submit">Remove Video</button>
                 </form>
             </li>
         {% endfor %}

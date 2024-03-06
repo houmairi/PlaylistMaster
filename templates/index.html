@@ -17,13 +17,13 @@
         <a href="{{ url_for('main.playlists') }}">View Playlists</a>
 
         {% if user_playlists %}
-            <h2>Your Playlists:</h2>
+            <h2>My Playlists</h2>
             <ul>
                 {% for playlist in user_playlists %}
-                    <li>{{ playlist.snippet.title }}</li>
+                <li>{{ playlist.snippet.title }}</li>
                 {% endfor %}
             </ul>
-        {% endif %}
+            {% endif %}
     {% else %}
         <h1>Welcome to Playlist Creator</h1>
         <p>You need to <a href="{{ url_for('main.authorize') }}">sign in with Google</a> to create a playlist.</p>

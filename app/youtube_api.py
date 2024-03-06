@@ -84,22 +84,17 @@ def build_youtube_client():
 
 def get_authenticated_service():
     credentials = None
-    # The file token.json stores the user's access and refresh tokens, and is
-    # created automatically when the authorization flow completes for the first
-    # time.
-    if os.path.exists('token.json'):
-        credentials = Credentials.from_authorized_user_file('token.json', SCOPES)
-    # If there are no (valid) credentials available, let the user log in.
+    credentials_json = session.get('credentials')
+    if credentials_json:
+        credentials = Credentials.from_authorized_user_info(info=json.loads(credentials_json))
     if not credentials or not credentials.valid:
         if credentials and credentials.expired and credentials.refresh_token:
-            credentials.refresh(Request())
+            try:
+                credentials.refresh(Request())
+            except RefreshError:
+                return redirect(url_for('main.authorize'))
         else:
-            flow = InstalledAppFlow.from_client_secrets_file(CLIENT_SECRETS_FILE, SCOPES)
-            credentials = flow.run_local_server(port=0)
-        # Save the credentials for the next run
-        with open('token.json', 'w') as token:
-            token.write(credentials.to_json())
-
+            return redirect(url_for('main.authorize'))
     return credentials
 
 def search_youtube_for_song(song_name, credentials):
@@ -241,26 +236,66 @@ def create_playlist_with_name(song_names, playlist_name):
 
     return success, message
 
-def get_user_playlists(credentials):
-    youtube = build(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION, credentials=credentials)
-    playlists = []
-    next_page_token = None
 
+def get_playlist_videos(credentials, playlist_id):
+    youtube = build(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION, credentials=credentials)
+    
+    videos = []
+    next_page_token = None
+    
     while True:
-        playlist_response = youtube.playlists().list(
-            part="snippet",
+        # Retrieve playlist items (videos)
+        playlist_items_response = youtube.playlistItems().list(
+            playlistId=playlist_id,
+            part='snippet',
             maxResults=50,
-            mine=True,
             pageToken=next_page_token
         ).execute()
-
-        playlists.extend(playlist_response["items"])
-        next_page_token = playlist_response.get("nextPageToken")
-
+        
+        # Extract video details from the response
+        for item in playlist_items_response['items']:
+            video = {
+                'id': item['snippet']['resourceId']['videoId'],
+                'snippet': {
+                    'title': item['snippet']['title'],
+                    'description': item['snippet']['description'],
+                    'thumbnail': item['snippet']['thumbnails']['default']['url']
+                }
+            }
+            videos.append(video)
+        
+        # Check if there are more pages of videos
+        next_page_token = playlist_items_response.get('nextPageToken')
+        
         if not next_page_token:
             break
+    
+    return videos    
 
-    return playlists
+def get_user_playlists(credentials):
+    try:
+        youtube = build(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION, credentials=credentials)
+        playlists = []
+        next_page_token = None
+
+        while True:
+            playlist_response = youtube.playlists().list(
+                part="snippet",
+                maxResults=50,
+                mine=True,
+                pageToken=next_page_token
+            ).execute()
+
+            playlists.extend(playlist_response["items"])
+            next_page_token = playlist_response.get("nextPageToken")
+
+            if not next_page_token:
+                break
+
+        return playlists
+    except HttpError as e:
+        logging.error(f'Failed to retrieve user playlists: {e}')
+        raise e
 
 def delete_playlist(credentials, playlist_id):
     youtube = build(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION, credentials=credentials)
@@ -277,18 +312,6 @@ def rename_playlist(credentials, playlist_id, new_title):
             )
         )
     ).execute()
-
-def remove_video_from_playlist(credentials, playlist_id, video_id):
-    youtube = build(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION, credentials=credentials)
-    playlist_items = youtube.playlistItems().list(
-        part="snippet",
-        playlistId=playlist_id,
-        videoId=video_id
-    ).execute()
-
-    if playlist_items["items"]:
-        playlist_item_id = playlist_items["items"][0]["id"]
-        youtube.playlistItems().delete(id=playlist_item_id).execute()
 
 def revoke_credentials(credentials):
     try:

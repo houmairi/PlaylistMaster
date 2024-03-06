@@ -1,7 +1,8 @@
 from flask import Blueprint, render_template, request, flash, redirect, url_for, session
-from .youtube_api import initiate_oauth_flow, oauth2callback, create_playlist_with_name, get_user_info, get_user_playlists, delete_playlist, rename_playlist
+from .youtube_api import initiate_oauth_flow, get_playlist_videos, oauth2callback, create_playlist_with_name, get_user_info, get_user_playlists, delete_playlist, rename_playlist
 from google.oauth2.credentials import Credentials
 import json
+from googleapiclient.errors import HttpError
 import logging
 
 bp = Blueprint('main', __name__)
@@ -26,7 +27,7 @@ def callback():
         flash('Authentication failed. Please try logging in again.')
         return redirect(url_for('main.authorize'))
 
-@bp.route('/')
+@bp.route('/', methods=['GET', 'POST'])
 def index():
     user_name = None
     user_playlists = None
@@ -46,44 +47,49 @@ def index():
         except Exception as e:
             logging.error(f'Failed to retrieve user playlists: {e}')
 
+    if request.method == 'POST':
+        playlist_name = request.form['playlist_name']
+        song_list = request.form['song_list']
+        song_names = [name.strip() for name in song_list.split('\n') if name.strip()]
+
+        if not playlist_name:
+            flash('Please provide a playlist name.')
+        elif not song_names:
+            flash('Please provide at least one song.')
+        else:
+            success, message = create_playlist_with_name(song_names, playlist_name)
+            if success:
+                flash(message)
+            else:
+                flash(f'Error: {message}')
+        return redirect(url_for('main.index'))
+
     return render_template('index.html', user_name=user_name, user_playlists=user_playlists)
 
 @bp.route('/playlists')
 def playlists():
     credentials_json = session.get('credentials')
-    if not credentials_json:
-        flash('Please log in to view your playlists.')
-        return redirect(url_for('main.authorize'))
-
-    try:
-        credentials = Credentials.from_authorized_user_info(
-            info=json.loads(credentials_json)
-        )
-        playlists = get_user_playlists(credentials)
-    except Exception as e:
-        logging.error(f'Failed to get user playlists: {e}')
-        playlists = []
-
-    return render_template('playlists.html', playlists=playlists)
-
-@bp.route('/delete_playlist/<playlist_id>', methods=['POST'])
-def delete_playlist_route(playlist_id):
-    credentials_json = session.get('credentials')
-    if not credentials_json:
-        flash('Please log in to delete a playlist.')
-        return redirect(url_for('main.authorize'))
-
-    try:
-        credentials = Credentials.from_authorized_user_info(
-            info=json.loads(credentials_json)
-        )
-        delete_playlist(credentials, playlist_id)
-        flash('Playlist deleted successfully.')
-    except Exception as e:
-        logging.error(f'Failed to delete playlist: {e}')
-        flash('Failed to delete playlist. Please try again.')
-
-    return redirect(url_for('main.playlists'))
+    if credentials_json:
+        try:
+            credentials = Credentials.from_authorized_user_info(
+                info=json.loads(credentials_json)
+            )
+            playlists = get_user_playlists(credentials)
+            # Fetch videos for each playlist
+            for playlist in playlists:
+                try:
+                    playlist['videos'] = get_playlist_videos(credentials, playlist['id'])
+                except HttpError as e:
+                    logging.error(f'Failed to retrieve videos for playlist {playlist["id"]}: {e}')
+                    playlist['videos'] = []
+            return render_template('playlists.html', playlists=playlists)
+        except ValueError as e:
+            logging.error(f'Failed to deserialize credentials: {e}')
+            flash('An error occurred while retrieving playlists. Please try again.')
+        except HttpError as e:
+            logging.error(f'Failed to retrieve user playlists: {e}')
+            flash('An error occurred while retrieving playlists. Please try again.')
+    return redirect(url_for('main.authorize'))
 
 @bp.route('/rename_playlist/<playlist_id>', methods=['POST'])
 def rename_playlist_route(playlist_id):
@@ -106,6 +112,25 @@ def rename_playlist_route(playlist_id):
     except Exception as e:
         logging.error(f'Failed to rename playlist: {e}')
         flash('Failed to rename playlist. Please try again.')
+
+    return redirect(url_for('main.playlists'))
+
+@bp.route('/remove_playlist/<playlist_id>', methods=['POST'])
+def remove_playlist_route(playlist_id):
+    credentials_json = session.get('credentials')
+    if not credentials_json:
+        flash('Please log in to remove a playlist.')
+        return redirect(url_for('main.authorize'))
+
+    try:
+        credentials = Credentials.from_authorized_user_info(
+            info=json.loads(credentials_json)
+        )
+        delete_playlist(credentials, playlist_id)
+        flash('Playlist removed successfully.')
+    except Exception as e:
+        logging.error(f'Failed to remove playlist: {e}')
+        flash('Failed to remove playlist. Please try again.')
 
     return redirect(url_for('main.playlists'))
 
