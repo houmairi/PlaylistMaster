@@ -356,3 +356,21 @@
 2024-03-06 05:49:20 WARNING:  * Debugger is active!
 2024-03-06 05:49:20 INFO:  * Debugger PIN: 968-812-317
 2024-03-06 05:49:21 INFO:  * Detected change in 'C:\\Users\\Niko\\Documents\\Repositorys\\PlaylistMaster\\app.py', reloading
+2024-03-06 05:49:21 INFO:  * Restarting with stat
+2024-03-06 05:49:22 WARNING:  * Debugger is active!
+2024-03-06 05:49:22 INFO:  * Debugger PIN: 968-812-317
+2024-03-06 05:49:24 INFO: 127.0.0.1 - - [06/Mar/2024 05:49:24] "GET / HTTP/1.1" 200 -
+2024-03-06 05:49:26 INFO: 127.0.0.1 - - [06/Mar/2024 05:49:26] "[32mGET /logout HTTP/1.1[0m" 302 -
+2024-03-06 05:49:26 INFO: 127.0.0.1 - - [06/Mar/2024 05:49:26] "GET / HTTP/1.1" 200 -
+2024-03-06 05:49:27 INFO: 127.0.0.1 - - [06/Mar/2024 05:49:27] "[32mGET /authorize HTTP/1.1[0m" 302 -
+2024-03-06 05:49:32 INFO: Successfully fetched token
+2024-03-06 05:49:32 INFO: Credentials saved to session
+2024-03-06 05:49:32 INFO: 127.0.0.1 - - [06/Mar/2024 05:49:32] "[32mGET /oauth2callback?state=M65zcSLl1ukbfZdUIMEzIoALrKOhAb&code=4/0AeaYSHC4MDN4wMpRtx-Geiv-MBhrfz3CavDCfbumIlEAytYximqHcJwd32Z0dyMV7jLSQA&scope=profile%20https://www.googleapis.com/auth/youtube.force-ssl%20https://www.googleapis.com/auth/youtube.readonly%20https://www.googleapis.com/auth/youtube%20openid%20https://www.googleapis.com/auth/userinfo.profile&authuser=0&prompt=consent HTTP/1.1[0m" 302 -
+2024-03-06 05:49:32 INFO: 127.0.0.1 - - [06/Mar/2024 05:49:32] "GET / HTTP/1.1" 200 -
+2024-03-06 05:50:11 INFO: file_cache is only supported with oauth2client<4.0.0
+2024-03-06 05:50:11 INFO: file_cache is only supported with oauth2client<4.0.0
+2024-03-06 05:50:12 INFO: file_cache is only supported with oauth2client<4.0.0
+2024-03-06 05:50:14 INFO: file_cache is only supported with oauth2client<4.0.0
+2024-03-06 05:50:15 INFO: file_cache is only supported with oauth2client<4.0.0
+2024-03-06 05:50:16 INFO: 127.0.0.1 - - [06/Mar/2024 05:50:16] "[32mPOST / HTTP/1.1[0m" 302 -
+2024-03-06 05:50:16 INFO: 127.0.0.1 - - [06/Mar/2024 05:50:16] "GET / HTTP/1.1" 200 -
