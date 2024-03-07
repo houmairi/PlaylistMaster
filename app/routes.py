@@ -76,13 +76,6 @@ def playlists():
                 info=json.loads(credentials_json)
             )
             playlists = get_user_playlists(credentials)
-            # Fetch videos for each playlist
-            for playlist in playlists:
-                try:
-                    playlist['videos'] = get_playlist_videos(credentials, playlist['id'])
-                except HttpError as e:
-                    logging.error(f'Failed to retrieve videos for playlist {playlist["id"]}: {e}')
-                    playlist['videos'] = []
             return render_template('playlists.html', playlists=playlists)
         except ValueError as e:
             logging.error(f'Failed to deserialize credentials: {e}')

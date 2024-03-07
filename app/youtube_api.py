@@ -282,7 +282,8 @@ def get_user_playlists(credentials):
                 part="snippet",
                 maxResults=50,
                 mine=True,
-                pageToken=next_page_token
+                pageToken=next_page_token,
+                fields="items(id,snippet(title)),nextPageToken"
             ).execute()
 
             playlists.extend(playlist_response["items"])
