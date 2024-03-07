@@ -1,32 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.5.0/dist/semantic.min.css">
     <meta charset="UTF-8">
     <title>Create Playlist</title>
 </head>
 <body>
-    {% if session.get('credentials') %}
-        <h1>Hi {{ user_name }}, Create Playlist from Song List</h1>
-        <form method="post">
-            <label for="playlist_name">Playlist Name:</label>
-            <input type="text" id="playlist_name" name="playlist_name" placeholder="Enter playlist name" required><br><br>
-            <textarea name="song_list" rows="10" cols="50" placeholder="Enter songs, one per line..." required></textarea><br>
-            <button type="submit">Create Playlist</button>
-        </form>
-        <a href="{{ url_for('main.logout') }}">Logout</a>
-        <a href="{{ url_for('main.playlists') }}">View Playlists</a>
+    <div class="ui container">
+        {% if session.get('credentials') %}
+            <h1 class="ui header">Hi {{ user_name }}, Create Playlist from Song List</h1>
+            <form class="ui form" method="post">
+                <div class="field">
+                    <label for="playlist_name">Playlist Name:</label>
+                    <input type="text" id="playlist_name" name="playlist_name" placeholder="Enter playlist name" required>
+                </div>
+                <div class="field">
+                    <label>Song List:</label>
+                    <textarea name="song_list" rows="10" placeholder="Enter songs, one per line..." required></textarea>
+                </div>
+                <div class="field">
+                    <label>Playlist Visibility:</label>
+                    <div class="ui radio checkbox">
+                        <input type="radio" id="public" name="privacy_status" value="public" required>
+                        <label for="public">Public</label>
+                    </div>
+                    <div class="ui radio checkbox disabled">
+                        <input type="radio" id="unlisted" name="privacy_status" value="unlisted" disabled>
+                        <label for="unlisted">Unlisted</label>
+                    </div>
+                    <div class="ui radio checkbox">
+                        <input type="radio" id="private" name="privacy_status" value="private">
+                        <label for="private">Private</label>
+                    </div>
+                </div>
+                <button class="ui primary button" type="submit">Create Playlist</button>
+            </form>
+            <div class="ui divider"></div>
+            <div class="footer">
+                <a class="ui button" href="{{ url_for('main.logout') }}">Logout</a>
+                <a class="ui button" href="{{ url_for('main.playlists') }}">View Playlists</a>
+            </div>
+        {% else %}
+            <div class="ui center aligned segment">
+                <h1 class="ui header">Welcome to Playlist Creator</h1>
+                <p>You need to <a href="{{ url_for('main.authorize') }}">sign in with Google</a> to create a playlist.</p>
+            </div>
+        {% endif %}
+    </div>
 
-        {% if user_playlists %}
-            <h2>My Playlists</h2>
-            <ul>
-                {% for playlist in user_playlists %}
-                <li>{{ playlist.snippet.title }}</li>
-                {% endfor %}
-            </ul>
-            {% endif %}
-    {% else %}
-        <h1>Welcome to Playlist Creator</h1>
-        <p>You need to <a href="{{ url_for('main.authorize') }}">sign in with Google</a> to create a playlist.</p>
-    {% endif %}
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.5.0/dist/semantic.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.ui.radio.checkbox').checkbox();
+        });
+    </script>
 </body>
 </html>

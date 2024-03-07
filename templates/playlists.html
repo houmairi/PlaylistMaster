@@ -1,29 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.5.0/dist/semantic.min.css">
     <meta charset="UTF-8">
     <title>Playlists</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
-    <h1>Your Playlists</h1>
-    {% if playlists %}
-        <ul>
-        {% for playlist in playlists %}
-            <li>
-                {{ playlist.snippet.title }}
-                <form action="{{ url_for('main.remove_playlist_route', playlist_id=playlist.id) }}" method="post">
-                    <button type="submit">Delete</button>
-                </form>
-                <form action="{{ url_for('main.rename_playlist_route', playlist_id=playlist.id) }}" method="post">
-                    <input type="text" name="new_title" placeholder="New title">
-                    <button type="submit">Rename</button>
-                </form>
-            </li>
-        {% endfor %}
-        </ul>
-    {% else %}
-        <p>No playlists found.</p>
-    {% endif %}
-    <a href="{{ url_for('main.index') }}">Back to Home</a>
+    <div class="container">
+        <h1>Your Playlists</h1>
+        {% if playlists %}
+            <ul>
+            {% for playlist in playlists %}
+                <li>
+                    {{ playlist.snippet.title }}
+                    <form action="{{ url_for('main.remove_playlist_route', playlist_id=playlist.id) }}" method="post">
+                        <button type="submit">Delete</button>
+                    </form>
+                    <form action="{{ url_for('main.rename_playlist_route', playlist_id=playlist.id) }}" method="post">
+                        <input type="text" name="new_title" placeholder="New title">
+                        <button type="submit">Rename</button>
+                    </form>
+                </li>
+            {% endfor %}
+            </ul>
+        {% else %}
+            <p>No playlists found.</p>
+        {% endif %}
+        <a href="{{ url_for('main.index') }}">Back to Home</a>
+    </div>
 </body>
 </html>

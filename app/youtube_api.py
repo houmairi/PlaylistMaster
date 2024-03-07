@@ -169,7 +169,7 @@ def get_user_info(credentials):
         logging.error(f'Failed to get user info: {e}')
         return 'User'
 
-def create_playlist_with_name(song_names, playlist_name):
+def create_playlist_with_name(song_names, playlist_name, privacy_status):
     """Create a playlist with a custom name and add the provided songs to it."""
     success = True
     message = f"Playlist '{playlist_name}' created successfully!"
@@ -192,7 +192,7 @@ def create_playlist_with_name(song_names, playlist_name):
     except HttpError as e:
         return False, f"Failed to build YouTube client: {e}"
 
-    # Create a new playlist with the provided name
+    # Create a new playlist with the provided name and privacy status
     try:
         playlists_insert_response = youtube.playlists().insert(
             part="snippet,status",
@@ -202,7 +202,7 @@ def create_playlist_with_name(song_names, playlist_name):
                     description="Created via API"
                 ),
                 status=dict(
-                    privacyStatus="private"
+                    privacyStatus=privacy_status
                 )
             )
         ).execute()

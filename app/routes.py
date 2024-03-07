@@ -50,6 +50,7 @@ def index():
     if request.method == 'POST':
         playlist_name = request.form['playlist_name']
         song_list = request.form['song_list']
+        privacy_status = request.form['privacy_status']
         song_names = [name.strip() for name in song_list.split('\n') if name.strip()]
 
         if not playlist_name:
@@ -57,7 +58,7 @@ def index():
         elif not song_names:
             flash('Please provide at least one song.')
         else:
-            success, message = create_playlist_with_name(song_names, playlist_name)
+            success, message = create_playlist_with_name(song_names, playlist_name, privacy_status)
             if success:
                 flash(message)
             else:
