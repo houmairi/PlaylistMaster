@@ -236,7 +236,6 @@ def create_playlist_with_name(song_names, playlist_name, privacy_status):
 
     return success, message
 
-
 def get_playlist_videos(credentials, playlist_id):
     youtube = build(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION, credentials=credentials)
     
@@ -259,7 +258,7 @@ def get_playlist_videos(credentials, playlist_id):
                 'snippet': {
                     'title': item['snippet']['title'],
                     'description': item['snippet']['description'],
-                    'thumbnail': item['snippet']['thumbnails']['default']['url']
+                    'thumbnail': item['snippet']['thumbnails'].get('default', {}).get('url', '')
                 }
             }
             videos.append(video)
@@ -270,7 +269,7 @@ def get_playlist_videos(credentials, playlist_id):
         if not next_page_token:
             break
     
-    return videos    
+    return videos
 
 def get_user_playlists(credentials):
     try:
