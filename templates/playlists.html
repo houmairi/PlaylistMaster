@@ -10,6 +10,8 @@
 <body>
     <div class="ui container">
         <h1 class="ui header">Your Playlists</h1>
+        <!-- Add the following button inside the playlists.html template -->
+        <a href="{{ url_for('main.download_playlists') }}" class="ui button">Download Playlists</a>
         {% if playlists %}
             <div class="ui relaxed divided list">
             {% for playlist in playlists %}

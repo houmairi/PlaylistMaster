@@ -161,6 +161,40 @@ def remove_videos_route(playlist_id):
 
     return redirect(url_for('main.playlists'))
 
+from flask import make_response
+
+@bp.route('/download_playlists')
+def download_playlists():
+    credentials_json = session.get('credentials')
+    if not credentials_json:
+        flash('Please log in to download playlists.')
+        return redirect(url_for('main.authorize'))
+
+    try:
+        credentials = Credentials.from_authorized_user_info(
+            info=json.loads(credentials_json)
+        )
+        playlists = get_user_playlists(credentials)
+        playlist_info = []
+        for playlist in playlists:
+            playlist_videos = get_playlist_videos(credentials, playlist['id'])
+            playlist_info.append(f"Playlist: {playlist['snippet']['title']}")
+            for video in playlist_videos:
+                duration = video.get('duration', 'N/A') #fix the code so it shows the duration
+                playlist_info.append(f"- {video['title']} ({duration})")
+            playlist_info.append("")  # Add an empty line between playlists
+
+        # Generate the response with the playlist information
+        response = make_response("\n".join(playlist_info))
+        response.headers['Content-Disposition'] = 'attachment; filename=playlists.txt'
+        response.headers['Content-type'] = 'text/plain'
+        return response
+    except Exception as e:
+        logging.error(f'Failed to generate playlist information: {e}')
+        flash('Failed to generate playlist information. Please try again.')
+
+    return redirect(url_for('main.playlists'))
+
 @bp.route('/logout')
 def logout():
     session.clear()  # Clear the session data

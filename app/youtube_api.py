@@ -250,7 +250,7 @@ def get_playlist_videos(credentials, playlist_id):
         # Retrieve playlist items (videos)
         playlist_items_response = youtube.playlistItems().list(
             playlistId=playlist_id,
-            part='snippet',
+            part='snippet,contentDetails',
             maxResults=50,
             pageToken=next_page_token
         ).execute()
@@ -259,7 +259,8 @@ def get_playlist_videos(credentials, playlist_id):
         for item in playlist_items_response['items']:
             video = {
                 'id': item['snippet']['resourceId']['videoId'],
-                'title': item['snippet']['title']
+                'title': item['snippet']['title'],
+                'duration': item['contentDetails'].get('duration', 'N/A')
             }
             videos.append(video)
         
