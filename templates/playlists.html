@@ -1,33 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.5.0/dist/semantic.min.css">
     <meta charset="UTF-8">
     <title>Playlists</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
 </head>
 <body>
-    <div class="container">
-        <h1>Your Playlists</h1>
+    <div class="ui container">
+        <h1 class="ui header">Your Playlists</h1>
         {% if playlists %}
-            <ul>
+            <div class="ui relaxed divided list">
             {% for playlist in playlists %}
-                <li>
-                    {{ playlist.snippet.title }}
-                    <form action="{{ url_for('main.remove_playlist_route', playlist_id=playlist.id) }}" method="post">
-                        <button type="submit">Delete</button>
-                    </form>
-                    <form action="{{ url_for('main.rename_playlist_route', playlist_id=playlist.id) }}" method="post">
-                        <input type="text" name="new_title" placeholder="New title">
-                        <button type="submit">Rename</button>
-                    </form>
-                </li>
+                <div class="item">
+                    <i class="large middle aligned icon music"></i>
+                    <div class="content">
+                        <a class="header">{{ playlist.snippet.title }}</a>
+                        <i class="edit icon" data-tooltip="Rename Playlist" data-position="top left" data-variation="mini" data-playlist-id="{{ playlist.id }}"></i>
+                        <div class="description">
+                            <form action="{{ url_for('main.remove_playlist_route', playlist_id=playlist.id) }}" method="post" class="ui form">
+                                <button type="submit" class="ui red button">Delete Playlist</button>
+                            </form>
+                        </div>
+                        <div class="list">
+                        {% for video in playlist.videos %}
+                            <div class="item">
+                                <div class="right floated content">
+                                    <div class="ui checkbox">
+                                        <input type="checkbox" name="video_ids[]" value="{{ video.id }}">
+                                        <label></label>
+                                    </div>
+                                </div>
+                                <div class="content">
+                                    <div class="header">{{ video.title }}</div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                        </div>
+                        <form action="{{ url_for('main.remove_videos_route', playlist_id=playlist.id) }}" method="post" class="ui form">
+                            <button type="submit" class="ui button">Delete Selected Videos</button>
+                        </form>
+                    </div>
+                </div>
             {% endfor %}
-            </ul>
+            </div>
         {% else %}
             <p>No playlists found.</p>
         {% endif %}
-        <a href="{{ url_for('main.index') }}">Back to Home</a>
+        <a href="{{ url_for('main.index') }}" class="ui button">Back to Home</a>
     </div>
+
+    <div class="ui mini modal">
+        <div class="header">Rename Playlist</div>
+        <div class="content">
+            <form action="" method="post" class="ui form rename-form">
+                <div class="field">
+                    <label>New Title</label>
+                    <input type="text" name="new_title" placeholder="Enter new title" required>
+                </div>
+            </form>
+        </div>
+        <div class="actions">
+            <div class="ui cancel button">Cancel</div>
+            <div class="ui approve button">Rename</div>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            $('.edit.icon').popup();
+
+            $('.edit.icon').click(function() {
+                var playlistId = $(this).data('playlist-id');
+                $('.rename-form').attr('action', '/rename_playlist/' + playlistId);
+                $('.ui.mini.modal').modal('show');
+            });
+
+            $('.ui.approve.button').click(function() {
+                $('.rename-form').submit();
+            });
+        });
+    </script>
 </body>
 </html>

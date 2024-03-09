@@ -259,11 +259,7 @@ def get_playlist_videos(credentials, playlist_id):
         for item in playlist_items_response['items']:
             video = {
                 'id': item['snippet']['resourceId']['videoId'],
-                'snippet': {
-                    'title': item['snippet']['title'],
-                    'description': item['snippet']['description'],
-                    'thumbnail': item['snippet']['thumbnails'].get('default', {}).get('url', '')
-                }
+                'title': item['snippet']['title']
             }
             videos.append(video)
         
@@ -305,6 +301,11 @@ def get_user_playlists(credentials):
 def delete_playlist(credentials, playlist_id):
     youtube = build(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION, credentials=credentials)
     youtube.playlists().delete(id=playlist_id).execute()
+
+def remove_videos_from_playlist(credentials, playlist_id, video_ids):
+    youtube = build(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION, credentials=credentials)
+    for video_id in video_ids:
+        youtube.playlistItems().delete(id=video_id).execute()
 
 def rename_playlist(credentials, playlist_id, new_title):
     youtube = build(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION, credentials=credentials)

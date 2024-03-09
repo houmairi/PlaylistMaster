@@ -78,6 +78,8 @@ def playlists():
                 info=json.loads(credentials_json)
             )
             playlists = get_user_playlists(credentials)
+            for playlist in playlists:
+                playlist['videos'] = get_playlist_videos(credentials, playlist['id'])
             return render_template('playlists.html', playlists=playlists)
         except ValueError as e:
             logging.error(f'Failed to deserialize credentials: {e}')
@@ -127,6 +129,35 @@ def remove_playlist_route(playlist_id):
     except Exception as e:
         logging.error(f'Failed to remove playlist: {e}')
         flash('Failed to remove playlist. Please try again.')
+
+    return redirect(url_for('main.playlists'))
+
+def remove_videos_from_playlist(credentials, playlist_id, video_ids):
+    youtube = build(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION, credentials=credentials)
+    for video_id in video_ids:
+        youtube.playlistItems().delete(id=video_id).execute()
+
+@bp.route('/remove_videos/<playlist_id>', methods=['POST'])
+def remove_videos_route(playlist_id):
+    credentials_json = session.get('credentials')
+    if not credentials_json:
+        flash('Please log in to remove videos from a playlist.')
+        return redirect(url_for('main.authorize'))
+
+    video_ids = request.form.getlist('video_ids[]')
+    if not video_ids:
+        flash('No videos selected for removal.')
+        return redirect(url_for('main.playlists'))
+
+    try:
+        credentials = Credentials.from_authorized_user_info(
+            info=json.loads(credentials_json)
+        )
+        remove_videos_from_playlist(credentials, playlist_id, video_ids)
+        flash('Selected videos removed successfully.')
+    except Exception as e:
+        logging.error(f'Failed to remove videos from playlist: {e}')
+        flash('Failed to remove videos from playlist. Please try again.')
 
     return redirect(url_for('main.playlists'))
 
