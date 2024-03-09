@@ -12,6 +12,8 @@ from oauthlib.oauth2 import OAuth2Error
 import logging
 import json
 import google.auth.transport.requests
+from .cache import cache
+
 
 # YouTube API service endpoints
 YOUTUBE_API_SERVICE_NAME = 'youtube'
@@ -97,6 +99,7 @@ def get_authenticated_service():
             return redirect(url_for('main.authorize'))
     return credentials
 
+@cache.memoize(timeout=3600)  # Cache for 1 hour
 def search_youtube_for_song(song_name, credentials):
     youtube = build(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION, credentials=credentials)
     search_response = youtube.search().list(
@@ -236,6 +239,7 @@ def create_playlist_with_name(song_names, playlist_name, privacy_status):
 
     return success, message
 
+@cache.memoize(timeout=3600)  # Cache for 1 hour
 def get_playlist_videos(credentials, playlist_id):
     youtube = build(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION, credentials=credentials)
     
@@ -271,6 +275,7 @@ def get_playlist_videos(credentials, playlist_id):
     
     return videos
 
+@cache.memoize(timeout=3600)  # Cache for 1 hour
 def get_user_playlists(credentials):
     try:
         youtube = build(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION, credentials=credentials)

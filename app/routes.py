@@ -4,6 +4,8 @@ from google.oauth2.credentials import Credentials
 import json
 from googleapiclient.errors import HttpError
 import logging
+from .cache import cache
+
 
 bp = Blueprint('main', __name__)
 
@@ -131,4 +133,5 @@ def remove_playlist_route(playlist_id):
 @bp.route('/logout')
 def logout():
     session.clear()  # Clear the session data
+    cache.clear()  # Clear the cache
     return redirect(url_for('main.index'))  # Redirect to the index page after logout
