@@ -17,7 +17,7 @@ A Flask application to manage YouTube playlists, including operations such as cr
 1. **Clone the Repository**
 
    ```bash
-   git clone [<repository-url>](https://github.com/houmairi/PlaylistMaster)
+   git clone https://github.com/houmairi/PlaylistMaster
    cd PlaylistMaster
    ```
 
