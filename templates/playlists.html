@@ -10,7 +10,21 @@
 <body>
     <div class="ui container">
         <h1 class="ui header">Your Playlists</h1>
-        <!-- Add the following button inside the playlists.html template -->
+        
+        <!-- Pagination Menu -->
+        <div class="ui pagination menu">
+            {% if pagination.page > 1 %}
+                <a class="item" href="{{ url_for('main.playlists', page=pagination.page-1) }}">Previous</a>
+            {% endif %}
+            {% for page in range(1, pagination.total_pages+1) %}
+                <a class="item {% if page == pagination.page %}active{% endif %}" href="{{ url_for('main.playlists', page=page) }}">{{ page }}</a>
+            {% endfor %}
+            {% if pagination.page < pagination.total_pages %}
+                <a class="item" href="{{ url_for('main.playlists', page=pagination.page+1) }}">Next</a>
+            {% endif %}
+        </div>
+
+        <!-- Download Playlists Dropdown -->
         <div class="ui selection dropdown">
             Download Playlists <i class="dropdown icon"></i>
             <div class="menu">
@@ -19,6 +33,7 @@
                 <a class="item" href="{{ url_for('main.download_playlists', format='json') }}">JSON</a>
             </div>
         </div>
+
         {% if playlists %}
             <div class="ui relaxed divided list">
             {% for playlist in playlists %}

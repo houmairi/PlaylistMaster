@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, flash, redirect, url_for, session
+from flask import Blueprint, render_template, request, flash, redirect, url_for, session, request
 from .youtube_api import initiate_oauth_flow, get_playlist_videos, oauth2callback, create_playlist_with_name, get_user_info, get_user_playlists, delete_playlist, rename_playlist
 from google.oauth2.credentials import Credentials
 import json
@@ -77,10 +77,21 @@ def playlists():
             credentials = Credentials.from_authorized_user_info(
                 info=json.loads(credentials_json)
             )
+            page = request.args.get('page', 1, type=int)
+            per_page = 5
+            offset = (page - 1) * per_page
             playlists = get_user_playlists(credentials)
+            total_playlists = len(playlists)
+            playlists = playlists[offset:offset+per_page]
             for playlist in playlists:
                 playlist['videos'] = get_playlist_videos(credentials, playlist['id'])
-            return render_template('playlists.html', playlists=playlists)
+            pagination = {
+                'page': page,
+                'per_page': per_page,
+                'total_pages': (total_playlists + per_page - 1) // per_page,
+                'total_playlists': total_playlists
+            }
+            return render_template('playlists.html', playlists=playlists, pagination=pagination)
         except ValueError as e:
             logging.error(f'Failed to deserialize credentials: {e}')
             flash('An error occurred while retrieving playlists. Please try again.')
