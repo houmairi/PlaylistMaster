@@ -11,7 +11,14 @@
     <div class="ui container">
         <h1 class="ui header">Your Playlists</h1>
         <!-- Add the following button inside the playlists.html template -->
-        <a href="{{ url_for('main.download_playlists') }}" class="ui button">Download Playlists</a>
+        <div class="ui selection dropdown">
+            Download Playlists <i class="dropdown icon"></i>
+            <div class="menu">
+                <a class="item" href="{{ url_for('main.download_playlists', format='txt') }}">TXT</a>
+                <a class="item" href="{{ url_for('main.download_playlists', format='csv') }}">CSV</a>
+                <a class="item" href="{{ url_for('main.download_playlists', format='json') }}">JSON</a>
+            </div>
+        </div>
         {% if playlists %}
             <div class="ui relaxed divided list">
             {% for playlist in playlists %}
@@ -28,21 +35,12 @@
                         <div class="list">
                         {% for video in playlist.videos %}
                             <div class="item">
-                                <div class="right floated content">
-                                    <div class="ui checkbox">
-                                        <input type="checkbox" name="video_ids[]" value="{{ video.id }}">
-                                        <label></label>
-                                    </div>
-                                </div>
                                 <div class="content">
                                     <div class="header">{{ video.title }}</div>
                                 </div>
                             </div>
                         {% endfor %}
                         </div>
-                        <form action="{{ url_for('main.remove_videos_route', playlist_id=playlist.id) }}" method="post" class="ui form">
-                            <button type="submit" class="ui button">Delete Selected Videos</button>
-                        </form>
                     </div>
                 </div>
             {% endfor %}
@@ -72,6 +70,8 @@
     <script>
         $(document).ready(function() {
             $('.edit.icon').popup();
+
+            $('.ui.dropdown').dropdown();
 
             $('.edit.icon').click(function() {
                 var playlistId = $(this).data('playlist-id');

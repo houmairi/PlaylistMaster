@@ -137,34 +137,12 @@ def remove_videos_from_playlist(credentials, playlist_id, video_ids):
     for video_id in video_ids:
         youtube.playlistItems().delete(id=video_id).execute()
 
-@bp.route('/remove_videos/<playlist_id>', methods=['POST'])
-def remove_videos_route(playlist_id):
-    credentials_json = session.get('credentials')
-    if not credentials_json:
-        flash('Please log in to remove videos from a playlist.')
-        return redirect(url_for('main.authorize'))
-
-    video_ids = request.form.getlist('video_ids[]')
-    if not video_ids:
-        flash('No videos selected for removal.')
-        return redirect(url_for('main.playlists'))
-
-    try:
-        credentials = Credentials.from_authorized_user_info(
-            info=json.loads(credentials_json)
-        )
-        remove_videos_from_playlist(credentials, playlist_id, video_ids)
-        flash('Selected videos removed successfully.')
-    except Exception as e:
-        logging.error(f'Failed to remove videos from playlist: {e}')
-        flash('Failed to remove videos from playlist. Please try again.')
-
-    return redirect(url_for('main.playlists'))
-
 from flask import make_response
 
-@bp.route('/download_playlists')
-def download_playlists():
+from flask import make_response, jsonify
+
+@bp.route('/download_playlists/<format>')
+def download_playlists(format='txt'):
     credentials_json = session.get('credentials')
     if not credentials_json:
         flash('Please log in to download playlists.')
@@ -175,19 +153,40 @@ def download_playlists():
             info=json.loads(credentials_json)
         )
         playlists = get_user_playlists(credentials)
-        playlist_info = []
-        for playlist in playlists:
-            playlist_videos = get_playlist_videos(credentials, playlist['id'])
-            playlist_info.append(f"Playlist: {playlist['snippet']['title']}")
-            for video in playlist_videos:
-                duration = video.get('duration', 'N/A') #fix the code so it shows the duration
-                playlist_info.append(f"- {video['title']} ({duration})")
-            playlist_info.append("")  # Add an empty line between playlists
 
-        # Generate the response with the playlist information
-        response = make_response("\n".join(playlist_info))
-        response.headers['Content-Disposition'] = 'attachment; filename=playlists.txt'
-        response.headers['Content-type'] = 'text/plain'
+        if format == 'json':
+            playlist_data = []
+            for playlist in playlists:
+                playlist_videos = get_playlist_videos(credentials, playlist['id'])
+                playlist_data.append({
+                    'title': playlist['snippet']['title'],
+                    'videos': [{'title': video['title'], 'duration': video.get('duration', 'N/A')} for video in playlist_videos]
+                })
+            response = jsonify(playlist_data)
+            response.headers['Content-Disposition'] = 'attachment; filename=playlists.json'
+            response.headers['Content-type'] = 'application/json'
+        elif format == 'csv':
+            csv_data = "Playlist Title,Video Title,Duration\n"
+            for playlist in playlists:
+                playlist_videos = get_playlist_videos(credentials, playlist['id'])
+                for video in playlist_videos:
+                    csv_data += f"{playlist['snippet']['title']},{video['title']},{video.get('duration', 'N/A')}\n"
+            response = make_response(csv_data)
+            response.headers['Content-Disposition'] = 'attachment; filename=playlists.csv'
+            response.headers['Content-type'] = 'text/csv'
+        else:
+            playlist_info = []
+            for playlist in playlists:
+                playlist_videos = get_playlist_videos(credentials, playlist['id'])
+                playlist_info.append(f"Playlist: {playlist['snippet']['title']}")
+                for video in playlist_videos:
+                    duration = video.get('duration', 'N/A')
+                    playlist_info.append(f"- {video['title']} ({duration})")
+                playlist_info.append("")
+            response = make_response("\n".join(playlist_info))
+            response.headers['Content-Disposition'] = 'attachment; filename=playlists.txt'
+            response.headers['Content-type'] = 'text/plain'
+
         return response
     except Exception as e:
         logging.error(f'Failed to generate playlist information: {e}')

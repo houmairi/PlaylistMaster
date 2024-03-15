@@ -303,11 +303,6 @@ def delete_playlist(credentials, playlist_id):
     youtube = build(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION, credentials=credentials)
     youtube.playlists().delete(id=playlist_id).execute()
 
-def remove_videos_from_playlist(credentials, playlist_id, video_ids):
-    youtube = build(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION, credentials=credentials)
-    for video_id in video_ids:
-        youtube.playlistItems().delete(id=video_id).execute()
-
 def rename_playlist(credentials, playlist_id, new_title):
     youtube = build(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION, credentials=credentials)
     youtube.playlists().update(
